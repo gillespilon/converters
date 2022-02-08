@@ -24,7 +24,6 @@ def main():
     new_extension = ".docx"
     old_extension = ".html"
     patterns = [".html"]
-    start_time = time.time()
     original_stdout = ds.html_begin(
         output_url=output_url, header_title=header_title, header_id=header_id
     )
@@ -32,6 +31,7 @@ def main():
     path_html_files = ds.ask_directory_path(
         title=title_ask_directory, print_bool=True
     )
+    start_time = time.time()
     job_aid_html_files = ds.directory_file_list(
         directory=path_html_files, patterns=patterns
     )
