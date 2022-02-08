@@ -3,6 +3,8 @@
 Convert html files to aspx files using shutil.copyfile.
 Convert internal .html URLs to .aspx.
 Leave external .html URLs as is.
+
+Always make a copy of the directory of source files before running this script.
 """
 
 from shutil import copyfile
