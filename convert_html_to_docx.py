@@ -32,15 +32,15 @@ def main():
         title=title_ask_directory, print_bool=True
     )
     start_time = time.time()
-    job_aid_html_files = ds.directory_file_list(
+    html_files = ds.directory_file_list(
         directory=path_html_files, patterns=patterns
     )
-    job_aid_html_files = [
-        x for x in job_aid_html_files if x.stem.startswith(pattern_in_line)
+    html_files = [
+        x for x in html_files if x.stem.startswith(pattern_in_line)
     ]
-    print(job_aid_html_files)
+    print(html_files)
     print()
-    for f in job_aid_html_files:
+    for f in html_files:
         fr = open(f, "r")
         t = fr.readlines()
         fr.close()
@@ -52,7 +52,7 @@ def main():
             else:
                 fw.write(line)
         fw.close()
-    for f in job_aid_html_files:
+    for f in html_files:
         pypandoc.convert_file(
             source_file=str(f),
             to="docx",
