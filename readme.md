@@ -13,3 +13,7 @@ Convert a directory of .html files to .docx files. Convert internal .html URLs t
 **country_codes_names_domains.py**
 
 Get country codes, names, domains from Wikipedia table and create file.
+
+**convert_csv_to_feather.py**
+
+Convert a directory of .csv files to .feather files.
