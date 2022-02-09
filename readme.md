@@ -1,10 +1,10 @@
 # Converters
 
-This repository contains scripts to convert files from one format to another.
+This repository contains scripts to illustrate skills and competencies in those skills. Many of these scripts depend on my [datasense](https://github.com/gillespilon/datasense) package.
 
 **convert_html_to_docx.py**
 
-Convert a directory of .html files to .docx files. Convert internal .html URLs to .docx URLs. Leave external .html URLs as is.
+Convert a directory of .html files to .docx files. [Convert](Convert) internal .html URLs to .docx URLs. Leave external .html URLs as is.
 
 **convert_html_to_aspx.py**
 
