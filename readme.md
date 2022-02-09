@@ -17,3 +17,7 @@ Get country codes, names, domains from Wikipedia table and create file.
 **convert_csv_to_feather.py**
 
 Convert a directory of .csv files to .feather files.
+
+**concatenate_feather_files.py**
+
+Concatenate a folder of feather files to create a single feather file.
