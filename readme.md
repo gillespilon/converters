@@ -1,4 +1,4 @@
-# Converters
+# Scripts to illustrate skills and competencies
 
 This repository contains scripts to illustrate skills and competencies in those skills. Many of these scripts depend on my [datasense](https://github.com/gillespilon/datasense) package.
 
