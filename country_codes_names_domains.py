@@ -22,6 +22,7 @@ sys.excepthook = excepthook
 
 
 from pathlib import Path
+from os import chdir
 import time
 
 import datasense as ds
@@ -29,6 +30,8 @@ import pandas as pd
 
 
 def main():
+    # required for cron
+    chdir(Path(__file__).parent.resolve())
     # define parameters
     wiki_url = "https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2"
     output_url = "country_codes_names_domains.html"
