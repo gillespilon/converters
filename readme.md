@@ -9,3 +9,7 @@ Convert a directory of .html files to .docx files. Convert internal .html URLs t
 **convert_html_to_aspx.py**
 
 Convert a directory of .html files to .docx files. Convert internal .html URLs to .aspx URLs. Leaver external .html URLs as is.
+
+**country_codes_names_domains.py**
+
+Get country codes, names, domains from Wikipedia table and create file.
