@@ -43,7 +43,7 @@ def main():
         print_bool=True
     )
     output_url = "concatenate_feather_files.html"
-    path_file_out = Path("material_vendor_plant.feather").resolve()
+    path_file_out = Path("concatenate_feather_files.feather").resolve()
     header_id = "concatenate-feather-files"
     extension = ".feather"
     skiprows = 0
@@ -81,9 +81,9 @@ def main():
     print()
     print("path_file_out:")
     print(path_file_out)
-    print()
-    print("number of data rows:")
-    print(df.shape[0])
+    size_int = ds.file_size(path=path_file_out)
+    size_str = ds.byte_size(num=size_int)
+    print("is", size_str, "with", df.shape[0], "rows.")
     print()
     stop_time_1 = time.time()
     ds.script_summary(script_path=Path(__file__), action="finished at")
