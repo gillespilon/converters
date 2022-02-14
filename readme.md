@@ -25,3 +25,7 @@ Concatenate a folder of feather files to create a single feather file.
 **feather.py**
 
 Save a DataFrame to a feather file. Read a feather file into a DataFrame.
+
+**create_qr_codes.py**
+
+Create QR codes and save as .svg and .png files.
