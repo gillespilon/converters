@@ -3,8 +3,8 @@
 Create a QR code from a string.
 """
 
-from pathlib import Path
 from typing import NoReturn
+from pathlib import Path
 import pyqrcode as pq
 
 
