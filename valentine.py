@@ -12,6 +12,7 @@ import numpy as np
 def main():
     path = Path("valentine")
     my_love = "my_love"
+    more_love = "more_love"
     x = np.linspace(-3, 3, 1000)
     theta = np.linspace(0, 2 * np.pi, 1000)
     x = 13 * (np.sin(theta) ** 3)
@@ -38,6 +39,15 @@ def main():
         y=0,
         s=f"J’aime {my_love}",
         fontsize="36",
+        fontweight="black",
+        color="#ff0000",
+        horizontalalignment="center",
+    )
+    ax.text(
+        x=0,
+        y=-2,
+        s=more_love,
+        fontsize="12",
         fontweight="black",
         color="#ff0000",
         horizontalalignment="center",
