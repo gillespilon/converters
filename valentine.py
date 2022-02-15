@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 """
-Create an svg valentine for the woman I love.
+Create an svg valentine.
 """
 
 from pathlib import Path
