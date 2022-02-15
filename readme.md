@@ -10,6 +10,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 | convert_html_to_docx.py        | Convert a directory of .html files to .docx files. Convert internal .html URLs to .docx URLs. Leave external .html URLs as is.  |
 | country_codes_names_domains.py | Get country codes, names, domains from Wikipedia table and create file.                                                         |
 | create_qr_code.py              | Create QR codes and save as .svg and .png files.                                                                                |
+| describe_data_file.py          | Describe a .csv .feather data file.                                                                                             |
 | feather.py                     | Save a DataFrame to a feather file. Read a feather file into a DataFrame.                                                       |
 | move_directories.py            | Move directories to keep history.                                                                                               |
 | valentine.py                   | Create a Valentine to your love.                                                                                                |
