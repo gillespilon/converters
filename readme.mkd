@@ -2,7 +2,7 @@
 
 This repository contains scripts to illustrate skills and competencies in those skills. Many of these scripts depend on my [datasense](https://github.com/gillespilon/datasense) package.
 
-| script | description |
+| Python script | Description |
 | :--- | :--- |
 | convert_html_to_docx.py | Convert a directory of .html files to .docx files. Convert internal .html URLs to .docx URLs. Leave external .html URLs as is. |
 | convert_html_to_aspx.py | Convert a directory of .html files to .docx files. Convert internal .html URLs to .aspx URLs. Leaver external .html URLs as is. |
