@@ -16,19 +16,28 @@ def main():
     original_stdout = ds.html_begin(
         output_url=output_url, header_title=header_title, header_id=header_id
     )
+    function_name_syntax("1", 2, keyword_only_parameters=13.69)
+    print()
     for function in functions:
         ds.explore_functions(function=function)
     ds.html_end(original_stdout=original_stdout, output_url=output_url)
 
 
 def function_name_syntax(
-    positional_only_parameters,
+    positional_only_parameters: str,
     /,
-    positional_or_keyword_parameters,
+    positional_or_keyword_parameters: int,
     *,
-    keyword_only_parameters
+    keyword_only_parameters: float
 ):
-    pass
+    """
+    positional_only_parameters : str
+        Positional-only parameter.
+    positional_or_keyword_parameters : int
+        Positional-or-keyword parameter.
+    keyword_only_parameters : float
+        Keyword-only parameter.
+    """
 
 
 def function_name(
