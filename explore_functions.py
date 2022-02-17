@@ -54,7 +54,28 @@ def function_name(
     i: Union[float, int, None] = None,
     j: Union[List[str], Tuple[float, int], float, int, None] = None,
 ):
-    pass
+    """
+    a : float
+        Parameter a.
+    b : float
+        Parameter b.
+    c : float = 6
+        Paameter c.
+    d : Union[float, None] = None,
+        Parameter d.
+    e : Union[float, int, None] = None,
+        Parameter e.
+    f : float,
+        Parameter f.
+    g : float = 4,
+        Parameter g.
+    h : Union[float, None] = None,
+        Parameter h.
+    i : Union[float, int, None] = None,
+        Parameter i.
+    j : Union[List[str], Tuple[float, int], float, int, None] = None,
+        Parameter j.
+    """
 
 
 if __name__ == '__main__':
