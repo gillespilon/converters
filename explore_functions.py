@@ -9,15 +9,13 @@ import datasense as ds
 
 
 def main():
+    functions = [function_name_syntax, function_name]
     output_url = "explore_functions.html"
     header_title = "Explore functions"
     header_id = "explore-functions"
-    functions = [function_name_syntax, function_name]
     original_stdout = ds.html_begin(
         output_url=output_url, header_title=header_title, header_id=header_id
     )
-    function_name_syntax("1", 2, keyword_only_parameters=13.69)
-    print()
     for function in functions:
         ds.explore_functions(function=function)
     ds.html_end(original_stdout=original_stdout, output_url=output_url)
