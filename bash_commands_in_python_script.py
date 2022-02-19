@@ -1,6 +1,9 @@
 #! /usr/bin/env python3
 """
-Using bash commands in Python script.
+Executing bash shell type commands in a Python script.
+
+Requires my datasense package:
+    https://github.com/gillesilon/datasense
 """
 
 import datasense as ds
