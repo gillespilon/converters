@@ -4,14 +4,14 @@ Using bash commands in Python script.
 """
 
 from pathlib import Path
-import time
 
 import datasense as ds
-import pandas as pd
 
 
 def main():
-    pass
+    directories = ["directory_13", "directory_69"]
+    # create a list of empty directories
+    ds.create_directory(directories=directories)
 
 
 if __name__ == '__main__':
