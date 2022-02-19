@@ -29,6 +29,10 @@ def function_name_syntax(
     keyword_only_parameters: float
 ):
     """
+    Basic function example.
+
+    Parameters
+    ----------
     positional_only_parameters : str
         Positional-only parameter.
     positional_or_keyword_parameters : int
