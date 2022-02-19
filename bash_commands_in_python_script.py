@@ -3,8 +3,6 @@
 Using bash commands in Python script.
 """
 
-from pathlib import Path
-
 import datasense as ds
 
 
@@ -20,6 +18,10 @@ def main():
     # rename directories
     ds.rename_directory(
         sources=directories_old_name, destinations=directories_new_name
+    )
+    # copy directories
+    ds.copy_directory(
+        sources=directories_new_name, destinations=directories_old_name
     )
 
 
