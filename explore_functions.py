@@ -57,6 +57,10 @@ def function_name(
     j: Union[List[str], Tuple[float, int], float, int, None] = None,
 ):
     """
+    Intermediate function example.
+
+    Parameters
+    ----------
     a : float
         Parameter a.
     b : float
