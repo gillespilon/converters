@@ -4,7 +4,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 
 | Python script                     | Description                                                                                                                     |
 | :---                              | :---                                                                                                                            |
-| bash_commands_in_python_script.py | Using bash shell commands in Python script.                                                                                     |
+| bash_commands_in_python_script.py | Execute bash shell type commands in a Python script.                                                                            |
 | concatenate_feather_files.py      | Concatenate a directory of .feather files to create a single .feather file.                                                     |
 | convert_csv_to_feather.py         | Convert a directory of .csv files to .feather files.                                                                            |
 | convert_html_to_aspx.py           | Convert a directory of .html files to .docx files. Convert internal .html URLs to .aspx URLs. Leaver external .html URLs as is. |
