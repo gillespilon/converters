@@ -46,7 +46,6 @@ def main():
     for f in aspx_files:
         fr = open(f, "r")
         t = fr.readlines()
-        fr.close()
         fw = open(f, "w")
         for line in t:
             if pattern_in_line in line and old_extension in line:
@@ -54,7 +53,6 @@ def main():
                 fw.write(line)
             else:
                 fw.write(line)
-        fw.close()
     stop_time = time.time()
     ds.script_summary(script_path=Path(__file__), action="finished at")
     ds.report_summary(start_time=start_time, stop_time=stop_time)
