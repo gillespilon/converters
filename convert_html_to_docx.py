@@ -43,7 +43,6 @@ def main():
     for f in html_files:
         fr = open(f, "r")
         t = fr.readlines()
-        fr.close()
         fw = open(f, "w")
         for line in t:
             if pattern_in_line in line and old_extension in line:
@@ -51,7 +50,6 @@ def main():
                 fw.write(line)
             else:
                 fw.write(line)
-        fw.close()
     for f in html_files:
         pypandoc.convert_file(
             source_file=str(f),
