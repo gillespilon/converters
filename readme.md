@@ -15,5 +15,6 @@ This repository contains scripts to illustrate skills and competencies in those 
 | explore_functions.py              | Explore functions using inspect.signature.                                                                                      |
 | feather.py                        | Save a DataFrame to a .feather file. Read a .feather file into a DataFrame.                                                     |
 | move_directories.py               | Move directories to keep history.                                                                                               |
+| pyautogui_position.py             | Use PyAutoGUI to determine cursor position and screen size.                                                                     |
 | sap_hana_to_dataframe_to_file.py  | Create DataFrame and feather file fromSAP HANA view                                                                             |
 | valentine.py                      | Create a Valentine to your love.                                                                                                |
