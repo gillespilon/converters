@@ -27,7 +27,7 @@ def main():
     path_html_files = ds.ask_directory_path(
         title=title_ask_directory, print_bool=True
     )
-    start_time = time.time()
+    start_time = time.perf_counter()
     original_stdout = ds.html_begin(
         output_url=output_url, header_title=header_title, header_id=header_id
     )
@@ -53,7 +53,7 @@ def main():
                 fw.write(line)
             else:
                 fw.write(line)
-    stop_time = time.time()
+    stop_time = time.perf_counter()
     ds.script_summary(script_path=Path(__file__), action="finished at")
     ds.report_summary(start_time=start_time, stop_time=stop_time)
     ds.html_end(original_stdout=original_stdout, output_url=output_url)
