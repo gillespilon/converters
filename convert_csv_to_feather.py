@@ -32,7 +32,7 @@ def main():
         initialdir=directory_csv_files,
         print_bool=True,
     )
-    start_time = time.time()
+    start_time = time.perf_counter()
     # create list of paths to read
     path_csv = Path(directory_csv_files)
     paths_in = ds.directory_file_list(
@@ -56,7 +56,7 @@ def main():
     for path_in, path_out in zip(paths_in, paths_out):
         df = ds.read_file(file_name=path_in)
         ds.save_file(df=df, file_name=path_out)
-    stop_time = time.time()
+    stop_time = time.perf_counter()
     # Save html file
     ds.script_summary(script_path=Path(__file__), action="finished at")
     ds.report_summary(start_time=start_time, stop_time=stop_time)
