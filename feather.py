@@ -17,7 +17,7 @@ import datasense as ds
 
 
 def main():
-    start_time = time.time()
+    start_time = time.perf_counter()
     # define parameters
     feather_file = 'feather.feather'
     header_title = 'Feather tests'
@@ -57,7 +57,7 @@ def main():
         "is", size_str, "with", df.shape[0], "rows by", df.shape[1], "columns"
     )
     print()
-    stop_time = time.time()
+    stop_time = time.perf_counter()
     # Save html file
     ds.script_summary(
         script_path=Path(__file__),
