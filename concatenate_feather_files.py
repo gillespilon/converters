@@ -48,7 +48,7 @@ def main():
     extension = ".feather"
     skiprows = 0
     header = 0
-    start_time_1 = time.time()
+    start_time_1 = time.perf_counter()
     original_stdout = ds.html_begin(
         output_url=output_url, header_title=header_title, header_id=header_id
     )
@@ -85,7 +85,7 @@ def main():
     size_str = ds.byte_size(num=size_int)
     print("is", size_str, "with", df.shape[0], "rows.")
     print()
-    stop_time_1 = time.time()
+    stop_time_1 = time.perf_counter()
     ds.script_summary(script_path=Path(__file__), action="finished at")
     print(f"Execution time: {round(stop_time_1 - start_time_1, 6)} s")
     print()
