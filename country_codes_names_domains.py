@@ -45,7 +45,7 @@ def main():
         output_url=output_url, header_title=header_title, header_id=header_id
     )
     ds.script_summary(script_path=Path(__file__), action="started at")
-    start_time = time.time()
+    start_time = time.perf_counter()
     # create DataFrame from Wikipedia table
     data = (
         pd.DataFrame(
@@ -62,7 +62,7 @@ def main():
     ds.save_file(df=data, file_name=path_file_out)
     print(data)
     print()
-    stop_time = time.time()
+    stop_time = time.perf_counter()
     ds.script_summary(script_path=Path(__file__), action="finished at")
     ds.report_summary(
         start_time=start_time,
