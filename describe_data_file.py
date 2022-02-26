@@ -25,10 +25,10 @@ def main():
     path_in = ds.ask_open_file_name_path(
         title=path_in_title, initialdir=initialdir, filetypes=filetypes
     )
-    start_time = time.time()
+    start_time = time.perf_counter()
     data = ds.read_file(file_name=path_in)
     ds.dataframe_info(df=data, file_in=path_in, unique_bool=True)
-    stop_time = time.time()
+    stop_time = time.perf_counter()
     ds.report_summary(
         start_time=start_time,
         stop_time=stop_time,
