@@ -20,7 +20,7 @@ import pandas as pd
 
 
 def main():
-    start_time = time.time()
+    start_time = time.perf_counter()
     # usually set to prior month
     start_date = int((
         date.today().replace(day=1) - timedelta(days=1)
@@ -46,7 +46,7 @@ def main():
         file_name=file_name
     )
     conn.close()
-    stop_time = time.time()
+    stop_time = time.perf_counter()
     ds.report_summary(
         start_time=start_time,
         stop_time=stop_time
