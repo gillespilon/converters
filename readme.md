@@ -21,3 +21,4 @@ This repository contains scripts to illustrate skills and competencies in those 
 | scatter_plot_simple.py            | Single, simple scatter plot.                                                                                                    |
 | scatter_plot_labelled.py          | Single, labelled scatter plot.                                                                                                  |
 | scatter_plots_twin_y_axes.py      | Two scatter plots, single x axis, dual y axes, labelled.                                                                        |
+| scatter_plots_side_by_side.py     | Dual, side-by-side, simple scatter plots.                                                                                       |
