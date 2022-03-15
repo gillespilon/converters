@@ -20,3 +20,4 @@ This repository contains scripts to illustrate skills and competencies in those 
 | valentine.py                      | Create a Valentine to your love.                                                                                                |
 | scatter_plot_simple.py            | Single, simple scatter plot.                                                                                                    |
 | scatter_plot_labelled.py          | Single, labelled scatter plot.                                                                                                  |
+| scatter_plots_twin_y_axes.py      | Two scatter plots, single x axis, dual y axes, labelled.                                                                        |
