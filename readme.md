@@ -17,9 +17,9 @@ This repository contains scripts to illustrate skills and competencies in those 
 | move_directories.py                    | Move directories to keep history.                                                                                               |
 | pyautogui_position.py                  | Use PyAutoGUI to determine cursor position and screen size.                                                                     |
 | sap_hana_to_dataframe_to_file.py       | Create DataFrame and feather file fromSAP HANA view                                                                             |
-| valentine.py                           | Create a Valentine to your love.                                                                                                |
 | scatter_plot_simple.py                 | Single, simple scatter plot.                                                                                                    |
 | scatter_plot_labelled.py               | Single, labelled scatter plot.                                                                                                  |
 | scatter_plots_twin_y_axes.py           | Two scatter plots, single x axis, dual y axes, labelled.                                                                        |
 | scatter_plots_side_by_side.py          | Dual, side-by-side, simple scatter plots.                                                                                       |
 | scatter_plots_side_by_side_labelled.py | Dual, side-by-side, labelled scatter plots.                                                                                     |
+| valentine.py                           | Create a Valentine to your love.                                                                                                |
