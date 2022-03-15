@@ -18,3 +18,4 @@ This repository contains scripts to illustrate skills and competencies in those 
 | pyautogui_position.py             | Use PyAutoGUI to determine cursor position and screen size.                                                                     |
 | sap_hana_to_dataframe_to_file.py  | Create DataFrame and feather file fromSAP HANA view                                                                             |
 | valentine.py                      | Create a Valentine to your love.                                                                                                |
+| scatter_plot_simple.py            | Single, simple scatter plot.                                                                                                    |
