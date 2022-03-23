@@ -13,48 +13,32 @@ import datasense as ds
 
 
 def main():
-    # TODO: embed four data files, not read
-    axes_title = ['AQ1', 'AQ2', 'AQ3', 'AQ4']
-    colour1, colour2 = '#0077bb', '#33bbee'
+    axes_title = ["AQ1", "AQ2", "AQ3", "AQ4"]
+    colour1, colour2 = "#0077bb", "#33bbee"
     left, right, top, bottom = 2, 20, 14, 2
-    x_axis_label = 'X axis label (units)'
-    y_axis_label = 'Y axis label (units)'
+    x_axis_label = "X axis label (units)"
+    y_axis_label = "Y axis label (units)"
     fig_title = "Anscombe's Quartet"
     figsize = (12, 9)
     fig = plt.figure(figsize=figsize)
-    fig.suptitle(t=fig_title, fontweight='bold')
+    fig.suptitle(t=fig_title, fontweight="bold")
     for index in range(1, 5):
-        df = ds.read_file(file_name=f'aq{index}.csv')
+        df = ds.read_file(file_name=f"aq{index}.csv")
         ax = fig.add_subplot(2, 2, index)
-        ax.plot(
-            df['x'],
-            df['y'],
-            marker='.',
-            linestyle='',
-            color=colour1
-        )
-        b, m = nppoly.polyfit(df['x'], df['y'], 1)
+        ax.plot(df["x"], df["y"], marker=".", linestyle="", color=colour1)
+        b, m = nppoly.polyfit(df["x"], df["y"], 1)
         equation = f"$y = {b:.1f} + {m:.1f}x$"
-        ax.plot(df['x'], m*df['x'] + b, '-', color=colour2, label=equation)
-        ax.set_ylim(
-            bottom=bottom,
-            top=top
-        )
-        ax.set_xlim(
-            left=left,
-            right=right
-        )
+        ax.plot(df["x"], m * df["x"] + b, "-", color=colour2, label=equation)
+        ax.set_ylim(bottom=bottom, top=top)
+        ax.set_xlim(left=left, right=right)
         ax.set_title(label=f"{axes_title[index-1]}", fontweight="bold")
         ax.set_ylabel(ylabel=y_axis_label, fontweight="bold")
         ax.set_xlabel(xlabel=x_axis_label, fontweight="bold")
         ax.legend(frameon=False)
         ds.despine(ax=ax)
     plt.tight_layout(pad=3)
-    fig.savefig(
-        fname='anscombes_quartet.svg',
-        format='svg'
-    )
+    fig.savefig(fname="anscombes_quartet.svg", format="svg")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
