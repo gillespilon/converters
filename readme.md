@@ -4,6 +4,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 
 | Python script                          | Description                                                                                                                     |
 | :---                                   | :---                                                                                                                            |
+| anscombes_quartet.py                   | Anscombe's Quartet of four scatter plots and regression line in 2 x 2 grid                                                      |
 | bash_commands_in_python_script.py      | Execute bash shell type commands in a Python script.                                                                            |
 | concatenate_feather_files.py           | Concatenate a directory of .feather files to create a single .feather file.                                                     |
 | convert_csv_to_feather.py              | Convert a directory of .csv files to .feather files.                                                                            |
