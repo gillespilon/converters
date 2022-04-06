@@ -17,6 +17,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 | feather.py                             | Save a DataFrame to a .feather file. Read a .feather file into a DataFrame.                                                     |
 | move_directories.py                    | Move directories to keep history.                                                                                               |
 | normal_probability_plot.py             | Create normal probability plot of a Series of data.                                                                             |
+| play_sound.py                          | Play an mp3 file with Python                                                                                                    |
 | pyautogui_position.py                  | Use PyAutoGUI to determine cursor position and screen size.                                                                     |
 | sap_hana_to_dataframe_to_file.py       | Create DataFrame and feather file fromSAP HANA view                                                                             |
 | scatter_plot_simple.py                 | Single, simple scatter plot.                                                                                                    |
