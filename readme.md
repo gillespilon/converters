@@ -26,5 +26,6 @@ This repository contains scripts to illustrate skills and competencies in those 
 | scatter_plots_twin_y_axes.py           | Two scatter plots, single x axis, dual y axes, labelled.                                                                        |
 | scatter_plots_side_by_side.py          | Dual, side-by-side, simple scatter plots.                                                                                       |
 | scatter_plots_side_by_side_labelled.py | Dual, side-by-side, labelled scatter plots.                                                                                     |
-| valentine.py                           | Create a Valentine to your love.                                                                                                |
 | two_sample_t_test.py                   | Comprehensive statistical, graphical analysis of two-sample t test                                                              |
+| yeo_johnson_plot.py                    | Yeo-Johnson normality plot                                                                                                      |
+| valentine.py                           | Create a Valentine to your love.                                                                                                |
