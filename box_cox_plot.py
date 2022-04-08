@@ -1,9 +1,12 @@
 #! /usr/bin/env python3
 """
-Box-Cox probability plot
+Box-Cox normality plot
 
 Requirements
 - Series must be > 0
+
+Reference
+https://www.itl.nist.gov/div898/handbook/eda/section3/eda336.htm
 """
 
 from pathlib import Path
@@ -19,6 +22,7 @@ def main():
     output_url = 'box_cox_plt.html'
     header_title = 'Box-Cox Plot'
     header_id = 'box_cox_plot'
+    la, lb = -20, 20
     original_stdout = ds.html_begin(
         output_url=output_url,
         header_title=header_title,
@@ -28,16 +32,15 @@ def main():
         script_path=Path(__file__),
         action='started at'
     )
-    # replace next line with your data Series
-    # s = ds.random_data(name="random normal data", loc=69, scale=13)
+    # replace next line(s) with your data Series
+    # df = ds.read_file(file_name='us_mpg.csv')
+    # s = df.iloc[:, 0]
     s = stats.loggamma.rvs(5, size=500) + 5
     fig, ax = plt.subplots(nrows=1, ncols=1)
     # create a tuple of two ndarrays
     # fix this so the arrays are series and probl is replace with fig, ax
-    prob = stats.boxcox_normplot(x=s, la=-20, lb=20, plot=ax)
-    # print(type(prob).__name__)
-    # print(prob)
-    y, lmax_mle = stats.boxcox(x=s)
+    stats.boxcox_normplot(x=s, la=la, lb=lb, plot=ax)
+    y, lmax_mle, (min_ci, max_ci) = stats.boxcox(x=s, alpha=0.05)
     lmax_pearsonr = stats.boxcox_normmax(x=s)
     ax.axvline(lmax_mle, color='r', label=f'lmax_mle = {lmax_mle:.3f}')
     ax.axvline(
@@ -46,6 +49,9 @@ def main():
     )
     ax.legend(frameon=False)
     print(f"lmax_mle     : {lmax_mle:.3f}")
+    print(f"min_ci       : {min_ci  :.3f}")
+    print(f"max_ci       : {max_ci  :.3f}")
+    print()
     print(f"lmax_pearsonr: {lmax_pearsonr:.3f}")
     print()
     stop_time = time.perf_counter()
