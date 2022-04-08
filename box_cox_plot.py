@@ -33,7 +33,7 @@ def main():
     rc["ytick.labelsize"] = 10
     rc["axes.labelsize"] = 12
     rc["axes.titlesize"] = 15
-    la, lb = -2, 2
+    la, lb = -20, 20
     original_stdout = ds.html_begin(
         output_url=output_url,
         header_title=header_title,
@@ -44,10 +44,10 @@ def main():
         action="started at"
     )
     # replace next line(s) with your data Series
-    df = ds.read_file(file_name=Path("us_mpg.csv"))
-    s = df.iloc[:, 0]
+    # df = ds.read_file(file_name=Path("us_mpg.csv"))
+    # s = df.iloc[:, 0]
     # comment out next line if reading your own file
-    # s = stats.loggamma.rvs(5, size=500) + 5
+    s = stats.loggamma.rvs(5, size=500) + 5
     # create the Box-Cox normality plot
     fig, ax = plt.subplots(nrows=1, ncols=1)
     stats.boxcox_normplot(x=s, la=la, lb=lb, plot=ax)
