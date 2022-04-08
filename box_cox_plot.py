@@ -21,7 +21,7 @@ import datasense as ds
 def main():
     start_time = time.perf_counter()
     colour1, colour2 = "#0077bb", "#33bbee"
-    output_url = "box_cox_plt.html"
+    output_url = "box_cox_plot.html"
     rc["axes.labelweight"] = "bold"
     rc["axes.titleweight"] = "bold"
     header_title = "Box-Cox Plot"
@@ -30,7 +30,7 @@ def main():
     rc["ytick.labelsize"] = 10
     rc["axes.labelsize"] = 12
     rc["axes.titlesize"] = 15
-    la, lb = -20, 20
+    la, lb = -15, 15
     original_stdout = ds.html_begin(
         output_url=output_url,
         header_title=header_title,
@@ -56,9 +56,9 @@ def main():
     ax.legend(frameon=False, prop={"family": "monospace", "size": 8})
     ds.despine(ax=ax)
     fig.savefig(fname=Path("box_cox_plot.svg", format="svg"))
-    print(f"min CI : {min_ci  :7.3f}")
-    print(f"λ      : {lmax_mle:7.3f}")
-    print(f"max CI : {max_ci  :7.3f}")
+    print(f"min CI: {min_ci  :7.3f}")
+    print(f"λ     : {lmax_mle:7.3f}")
+    print(f"max CI: {max_ci  :7.3f}")
     print()
     stop_time = time.perf_counter()
     ds.script_summary(script_path=Path(__file__), action="finished at")
