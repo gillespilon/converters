@@ -10,9 +10,10 @@ Mathematical outputs:
     r is the square root of the coefficient of determination
 """
 
+from pathlib import Path
+
 from matplotlib.offsetbox import AnchoredText
 import matplotlib.pyplot as plt
-
 from scipy import stats
 import datasense as ds
 
@@ -21,7 +22,10 @@ def main():
     colour1, colour2 = "#0077bb", "#33bbee"
     axes_label = "Normal Probability Plot"
     spines_to_remove = ["top", "right"]
-    # replace next line with your data Series
+    # replace next line(s) with your data Series
+    # df = ds.read_file(file_name=Path("us_mpg.csv"))
+    # s = df.iloc[:, 0]
+    # comment out next line if reading your own file
     s = ds.random_data(name="random normal data")
     fig, ax = plt.subplots(nrows=1, ncols=1)
     ax.spines[spines_to_remove].set_visible(b=False)
