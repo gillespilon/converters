@@ -22,7 +22,7 @@ def main():
     output_url = 'box_cox_plt.html'
     header_title = 'Box-Cox Plot'
     header_id = 'box_cox_plot'
-    la, lb = -20, 20
+    la, lb = -2, 2
     original_stdout = ds.html_begin(
         output_url=output_url,
         header_title=header_title,
@@ -33,26 +33,19 @@ def main():
         action='started at'
     )
     # replace next line(s) with your data Series
-    # df = ds.read_file(file_name='us_mpg.csv')
-    # s = df.iloc[:, 0]
-    s = stats.loggamma.rvs(5, size=500) + 5
+    df = ds.read_file(file_name='us_mpg.csv')
+    s = df.iloc[:, 0]
+    # s = stats.loggamma.rvs(5, size=500) + 5
     fig, ax = plt.subplots(nrows=1, ncols=1)
     # create a tuple of two ndarrays
     # fix this so the arrays are series and probl is replace with fig, ax
     stats.boxcox_normplot(x=s, la=la, lb=lb, plot=ax)
-    y, lmax_mle, (min_ci, max_ci) = stats.boxcox(x=s, alpha=0.05)
-    lmax_pearsonr = stats.boxcox_normmax(x=s)
+    boxcox, lmax_mle, (min_ci, max_ci) = stats.boxcox(x=s, alpha=0.05)
     ax.axvline(lmax_mle, color='r', label=f'lmax_mle = {lmax_mle:.3f}')
-    ax.axvline(
-        lmax_pearsonr, color='g', ls='--',
-        label=f'lmax_pearsonr = {lmax_pearsonr:.3f}'
-    )
     ax.legend(frameon=False)
     print(f"lmax_mle     : {lmax_mle:.3f}")
     print(f"min_ci       : {min_ci  :.3f}")
     print(f"max_ci       : {max_ci  :.3f}")
-    print()
-    print(f"lmax_pearsonr: {lmax_pearsonr:.3f}")
     print()
     stop_time = time.perf_counter()
     ds.script_summary(
