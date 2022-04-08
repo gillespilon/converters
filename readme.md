@@ -6,6 +6,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 | :---                                   | :---                                                                                                                            |
 | anscombes_quartet.py                   | Anscombe's Quartet of four scatter plots and regression line in 2 x 2 grid                                                      |
 | bash_commands_in_python_script.py      | Execute bash shell type commands in a Python script.                                                                            |
+| box_cox_plot.py                        | Box-Cox normality plot                                                                                                          |
 | concatenate_feather_files.py           | Concatenate a directory of .feather files to create a single .feather file.                                                     |
 | convert_csv_to_feather.py              | Convert a directory of .csv files to .feather files.                                                                            |
 | convert_html_to_aspx.py                | Convert a directory of .html files to .docx files. Convert internal .html URLs to .aspx URLs. Leaver external .html URLs as is. |
