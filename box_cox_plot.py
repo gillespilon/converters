@@ -47,6 +47,7 @@ def main():
     ax.axvline(lmax_mle, color=colour1, label=f'lmax_mle = {lmax_mle:.3f}')
     ax.axvline(max_ci, color=colour2, label=f'max_ci = {max_ci:.3f}')
     ax.legend(frameon=False)
+    ds.despine(ax=ax)
     print(f"lmax_mle     : {lmax_mle:.3f}")
     print(f"min_ci       : {min_ci  :.3f}")
     print(f"max_ci       : {max_ci  :.3f}")
