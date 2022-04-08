@@ -41,7 +41,7 @@ def main():
         action="started at"
     )
     # replace next line(s) with your data Series
-    # df = ds.read_file(file_name="us_mpg.csv")
+    # df = ds.read_file(file_name=Path("us_mpg.csv"))
     # s = df.iloc[:, 0]
     s = stats.loggamma.rvs(5, size=500) + 5
     fig, ax = plt.subplots(nrows=1, ncols=1)
@@ -49,21 +49,24 @@ def main():
     stats.boxcox_normplot(x=s, la=la, lb=lb, plot=ax)
     ax.get_lines()[0].set(color=colour1, marker=".", markersize=4)
     boxcox, lmax_mle, (min_ci, max_ci) = stats.boxcox(x=s, alpha=0.05)
-    ax.axvline(min_ci, color=colour2, label=f"min_ci   = {min_ci:7.3f}")
-    ax.axvline(lmax_mle, color=colour1, label=f"lmax_mle = {lmax_mle:7.3f}")
-    ax.axvline(max_ci, color=colour2, label=f"max_ci   = {max_ci:7.3f}")
+    ax.axvline(min_ci, color=colour2, label=f"min CI = {min_ci:6.3f}")
+    ax.axvline(
+        lmax_mle, color=colour1, label=f"λ      = {lmax_mle:6.3f}"
+    )
+    ax.axvline(max_ci, color=colour2, label=f"max CI = {max_ci:6.3f}")
     ax.set_ylabel(ylabel="Correlation Coefficient")
-    ax.legend(frameon=False, prop={"family": "monospace"})
+    ax.legend(frameon=False, prop={"family": "monospace", "size": 8})
     ds.despine(ax=ax)
-    print(f"lmax_mle     : {lmax_mle:7.3f}")
-    print(f"min_ci       : {min_ci  :7.3f}")
-    print(f"max_ci       : {max_ci  :7.3f}")
+    fig.savefig(fname=Path("box_cox_plot.svg", format="svg"))
+    print(f"min CI : {min_ci  :6.3f}")
+    print(f"λ      : {lmax_mle:6.3f}")
+    print(f"max CI : {max_ci  :6.3f}")
     print()
     stop_time = time.perf_counter()
     ds.script_summary(script_path=Path(__file__), action="finished at")
     ds.report_summary(start_time=start_time, stop_time=stop_time)
     ds.html_end(original_stdout=original_stdout, output_url=output_url)
-    plt.show()
+    # plt.show()
 
 
 if __name__ == "__main__":
