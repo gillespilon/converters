@@ -15,13 +15,21 @@ import datasense as ds
 
 def main():
     start_time = time.perf_counter()
+    path_yeo_johnson_original = Path("yeo_johnson_original.svg", format="svg")
+    path_yeo_johnson = Path("yeo_johnson_plot.svg", format="svg")
+    path_yeo_johnson_transformed = Path(
+        "yeo_johnson_transformed.svg", format="svg"
+    )
     colour1, colour2 = "#0077bb", "#33bbee"
     axes_label = "Normal Probability Plot"
     output_url = "yeo_johnson_plot.html"
+    ylabel1 = "Correlation Coefficient"
+    xlabel = "Theoretical Quantiles"
     rc["axes.labelweight"] = "bold"
     rc["axes.titleweight"] = "bold"
     header_title = "Yeo-Johnson Plot"
     header_id = "yeo_johnson_plot"
+    ylabel2 = "Ordered Values"
     rc["xtick.labelsize"] = 10
     rc["ytick.labelsize"] = 10
     rc["axes.labelsize"] = 12
@@ -46,10 +54,10 @@ def main():
     ax.get_lines()[0].set(color=colour1, marker=".", markersize=4)
     yeojohson, maxlog = stats.boxcox(x=s)
     ax.axvline(maxlog, color=colour1, label=f"λ      = {maxlog:7.3f}")
-    ax.set_ylabel(ylabel="Correlation Coefficient")
+    ax.set_ylabel(ylabel=ylabel1)
     ax.legend(frameon=False, prop={"family": "monospace", "size": 8})
     ds.despine(ax=ax)
-    fig.savefig(fname=Path("yeo_johnson_plot.svg", format="svg"))
+    fig.savefig(fname=path_yeo_johnson)
     print(f"λ: {maxlog:7.3f}")
     print()
     # create the plot of the untransformed data
@@ -61,12 +69,12 @@ def main():
     ax.get_lines()[0].set(color=colour1, markersize=4)
     ax.get_lines()[1].set(color=colour2)
     ax.set_title(label=f"{axes_label}")
-    ax.set_xlabel(xlabel="Theoretical Quantiles")
-    ax.set_ylabel(ylabel="Ordered Values")
+    ax.set_xlabel(xlabel=xlabel)
+    ax.set_ylabel(ylabel=ylabel2)
     text = AnchoredText(s=equation, loc='upper left', frameon=False)
     ax.add_artist(a=text)
     ds.despine(ax=ax)
-    fig.savefig(fname=Path("yeo_johnson_original.svg", format="svg"))
+    fig.savefig(fname=path_yeo_johnson_original)
     # create the plot of the transformed data
     fig, ax = plt.subplots(nrows=1, ncols=1)
     (osm, osr), (slope, intercept, r) = \
@@ -76,12 +84,15 @@ def main():
     ax.get_lines()[0].set(color=colour1, markersize=4)
     ax.get_lines()[1].set(color=colour2)
     ax.set_title(label=f"{axes_label}")
-    ax.set_xlabel(xlabel="Theoretical Quantiles")
-    ax.set_ylabel(ylabel="Ordered Values")
+    ax.set_xlabel(xlabel=xlabel)
+    ax.set_ylabel(ylabel=ylabel2)
     text = AnchoredText(s=equation, loc='upper left', frameon=False)
     ax.add_artist(a=text)
     ds.despine(ax=ax)
-    fig.savefig(fname=Path("yeo_johnson_transformed.svg", format="svg"))
+    fig.savefig(fname=path_yeo_johnson_transformed)
+    # test
+    fig, ax = ds.probability_plot(data=yeojohson)
+    fig.savefig(fname=Path("test_yeo_johnson.svg", format="svg"))
     stop_time = time.perf_counter()
     ds.script_summary(script_path=Path(__file__), action="finished at")
     ds.report_summary(start_time=start_time, stop_time=stop_time)
