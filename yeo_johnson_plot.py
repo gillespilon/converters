@@ -52,6 +52,7 @@ def main():
     ax.legend(frameon=False, prop={"family": "monospace", "size": 8})
     ds.despine(ax=ax)
     fig.savefig(fname=path_yeo_johnson)
+    ds.html_figure(file_name=path_yeo_johnson)
     print(f"λ: {maxlog:7.3f}")
     print()
     # create the plot of the untransformed data
@@ -69,6 +70,7 @@ def main():
     ax.add_artist(a=text)
     ds.despine(ax=ax)
     fig.savefig(fname=path_yeo_johnson_original)
+    ds.html_figure(file_name=path_yeo_johnson_original)
     # create the plot of the transformed data
     fig, ax = plt.subplots(nrows=1, ncols=1)
     (osm, osr), (slope, intercept, r) = \
@@ -84,6 +86,7 @@ def main():
     ax.add_artist(a=text)
     ds.despine(ax=ax)
     fig.savefig(fname=path_yeo_johnson_transformed)
+    ds.html_figure(file_name=path_yeo_johnson_transformed)
     # test
     fig, ax = ds.probability_plot(data=yeojohson)
     fig.savefig(fname=Path("test_yeo_johnson.svg", format="svg"))
