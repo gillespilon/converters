@@ -12,12 +12,9 @@ https://www.itl.nist.gov/div898/handbook/eda/section3/eda336.htm
 from pathlib import Path
 import time
 
-from matplotlib.offsetbox import AnchoredText
-from matplotlib import rcParams as rc
 import matplotlib.pyplot as plt
 from scipy import stats
 import datasense as ds
-import pandas as pd
 
 
 def main():
@@ -43,6 +40,7 @@ def main():
         script_path=Path(__file__),
         action="started at"
     )
+    ds.style_graph()
     # replace next line(s) with your data Series
     # df = ds.read_file(file_name=Path("us_mpg.csv"))
     # s = df.iloc[:, 0]
@@ -60,35 +58,21 @@ def main():
     ax.legend(frameon=False, prop={"family": "monospace", "size": 8})
     ds.despine(ax=ax)
     fig.savefig(fname=path_box_cox)
-    print(f"min CI: {min_ci  :7.3f}")
-    print(f"λ     : {lmax_mle:7.3f}")
-    print(f"max CI: {max_ci  :7.3f}")
-    print()
+    ds.html_figure(file_name=path_box_cox)
     # create the plot of the untransformed data
-    fig, ax = plt.subplots(nrows=1, ncols=1)
-    (osm, osr), (slope, intercept, r) = \
-        stats.probplot(x=s, dist="norm", fit=True, plot=ax)
-    ax.get_lines()[0].set(color=colour1, markersize=4)
-    ax.get_lines()[1].set(color=colour2)
+    fig, ax = ds.probability_plot(data=s)
     ax.set_title(label=f"{axes_label}")
     ax.set_xlabel(xlabel=xlabel)
     ax.set_ylabel(ylabel=ylabel2)
-    ds.despine(ax=ax)
     fig.savefig(fname=path_box_cox_original)
+    ds.html_figure(file_name=path_box_cox_original)
     # create the plot of the transformed data
-    fig, ax = plt.subplots(nrows=1, ncols=1)
-    (osm, osr), (slope, intercept, r) = \
-        stats.probplot(x=boxcox, dist="norm", fit=True, plot=ax)
-    ax.get_lines()[0].set(color=colour1, markersize=4)
-    ax.get_lines()[1].set(color=colour2)
+    fig, ax = ds.probability_plot(data=boxcox)
     ax.set_title(label=f"{axes_label}")
     ax.set_xlabel(xlabel=xlabel)
     ax.set_ylabel(ylabel=ylabel2)
-    ds.despine(ax=ax)
     fig.savefig(fname=path_box_cox_transformed)
-    # test
-    fig, ax = ds.probability_plot(data=boxcox)
-    fig.savefig(fname=Path("test_box_cox.svg", format="svg"))
+    ds.html_figure(file_name=path_box_cox_transformed)
     stop_time = time.perf_counter()
     ds.script_summary(script_path=Path(__file__), action="finished at")
     ds.report_summary(start_time=start_time, stop_time=stop_time)
