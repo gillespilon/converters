@@ -30,15 +30,9 @@ def main():
     ylabel1 = "Correlation Coefficient"
     output_url = "box_cox_plot.html"
     xlabel = "Theoretical Quantiles"
-    rc["axes.labelweight"] = "bold"
-    rc["axes.titleweight"] = "bold"
     header_title = "Box-Cox Plot"
     header_id = "box_cox_plot"
-    rc["xtick.labelsize"] = 10
-    rc["ytick.labelsize"] = 10
     ylabel2 = "Ordered Values"
-    rc["axes.labelsize"] = 12
-    rc["axes.titlesize"] = 15
     la, lb = -20, 20
     original_stdout = ds.html_begin(
         output_url=output_url,
