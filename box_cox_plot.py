@@ -68,32 +68,27 @@ def main():
     fig, ax = plt.subplots(nrows=1, ncols=1)
     (osm, osr), (slope, intercept, r) = \
         stats.probplot(x=s, dist="norm", fit=True, plot=ax)
-    r_squared = r * r
-    equation = f"$r^2 = {r_squared:.3f}$"
     ax.get_lines()[0].set(color=colour1, markersize=4)
     ax.get_lines()[1].set(color=colour2)
     ax.set_title(label=f"{axes_label}")
     ax.set_xlabel(xlabel="Theoretical Quantiles")
     ax.set_ylabel(ylabel="Ordered Values")
-    text = AnchoredText(s=equation, loc='upper left', frameon=False)
-    ax.add_artist(a=text)
     ds.despine(ax=ax)
     fig.savefig(fname=Path("box_cox_original.svg", format="svg"))
     # create the plot of the transformed data
     fig, ax = plt.subplots(nrows=1, ncols=1)
     (osm, osr), (slope, intercept, r) = \
         stats.probplot(x=boxcox, dist="norm", fit=True, plot=ax)
-    r_squared = r * r
-    equation = f"$r^2 = {r_squared:.3f}$"
     ax.get_lines()[0].set(color=colour1, markersize=4)
     ax.get_lines()[1].set(color=colour2)
     ax.set_title(label=f"{axes_label}")
     ax.set_xlabel(xlabel="Theoretical Quantiles")
     ax.set_ylabel(ylabel="Ordered Values")
-    text = AnchoredText(s=equation, loc='upper left', frameon=False)
-    ax.add_artist(a=text)
     ds.despine(ax=ax)
     fig.savefig(fname=Path("box_cox_transformed.svg", format="svg"))
+    # test
+    fig, ax = ds.probability_plot(data=boxcox)
+    fig.savefig(fname=Path("test_box_cox.svg", format="svg"))
     stop_time = time.perf_counter()
     ds.script_summary(script_path=Path(__file__), action="finished at")
     ds.report_summary(start_time=start_time, stop_time=stop_time)
