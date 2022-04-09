@@ -7,7 +7,6 @@ from pathlib import Path
 import time
 
 from matplotlib.offsetbox import AnchoredText
-from matplotlib import rcParams as rc
 import matplotlib.pyplot as plt
 from scipy import stats
 import datasense as ds
@@ -25,15 +24,9 @@ def main():
     output_url = "yeo_johnson_plot.html"
     ylabel1 = "Correlation Coefficient"
     xlabel = "Theoretical Quantiles"
-    rc["axes.labelweight"] = "bold"
-    rc["axes.titleweight"] = "bold"
     header_title = "Yeo-Johnson Plot"
     header_id = "yeo_johnson_plot"
     ylabel2 = "Ordered Values"
-    rc["xtick.labelsize"] = 10
-    rc["ytick.labelsize"] = 10
-    rc["axes.labelsize"] = 12
-    rc["axes.titlesize"] = 15
     la, lb = -20, 20
     original_stdout = ds.html_begin(
         output_url=output_url,
@@ -44,6 +37,7 @@ def main():
         script_path=Path(__file__),
         action="started at"
     )
+    ds.style_graph()
     # replace next line(s) with your data Series
     # df = ds.read_file(file_name=Path("us_mpg.csv"))
     # s = df.iloc[:, 0]
