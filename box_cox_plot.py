@@ -22,15 +22,21 @@ import pandas as pd
 
 def main():
     start_time = time.perf_counter()
+    path_box_cox_transformed = Path("box_cox_transformed.svg", format="svg")
+    path_box_cox_original = Path("box_cox_original.svg", format="svg")
+    path_box_cox = Path("box_cox_plot.svg", format="svg")
     colour1, colour2 = "#0077bb", "#33bbee"
     axes_label = "Normal Probability Plot"
+    ylabel1 = "Correlation Coefficient"
     output_url = "box_cox_plot.html"
+    xlabel = "Theoretical Quantiles"
     rc["axes.labelweight"] = "bold"
     rc["axes.titleweight"] = "bold"
     header_title = "Box-Cox Plot"
     header_id = "box_cox_plot"
     rc["xtick.labelsize"] = 10
     rc["ytick.labelsize"] = 10
+    ylabel2 = "Ordered Values"
     rc["axes.labelsize"] = 12
     rc["axes.titlesize"] = 15
     la, lb = -20, 20
@@ -56,10 +62,10 @@ def main():
     ax.axvline(min_ci, color=colour2, label=f"min CI = {min_ci:7.3f}")
     ax.axvline(lmax_mle, color=colour1, label=f"λ      = {lmax_mle:7.3f}")
     ax.axvline(max_ci, color=colour2, label=f"max CI = {max_ci:7.3f}")
-    ax.set_ylabel(ylabel="Correlation Coefficient")
+    ax.set_ylabel(ylabel=ylabel1)
     ax.legend(frameon=False, prop={"family": "monospace", "size": 8})
     ds.despine(ax=ax)
-    fig.savefig(fname=Path("box_cox_plot.svg", format="svg"))
+    fig.savefig(fname=path_box_cox)
     print(f"min CI: {min_ci  :7.3f}")
     print(f"λ     : {lmax_mle:7.3f}")
     print(f"max CI: {max_ci  :7.3f}")
@@ -71,10 +77,10 @@ def main():
     ax.get_lines()[0].set(color=colour1, markersize=4)
     ax.get_lines()[1].set(color=colour2)
     ax.set_title(label=f"{axes_label}")
-    ax.set_xlabel(xlabel="Theoretical Quantiles")
-    ax.set_ylabel(ylabel="Ordered Values")
+    ax.set_xlabel(xlabel=xlabel)
+    ax.set_ylabel(ylabel=ylabel2)
     ds.despine(ax=ax)
-    fig.savefig(fname=Path("box_cox_original.svg", format="svg"))
+    fig.savefig(fname=path_box_cox_original)
     # create the plot of the transformed data
     fig, ax = plt.subplots(nrows=1, ncols=1)
     (osm, osr), (slope, intercept, r) = \
@@ -82,10 +88,10 @@ def main():
     ax.get_lines()[0].set(color=colour1, markersize=4)
     ax.get_lines()[1].set(color=colour2)
     ax.set_title(label=f"{axes_label}")
-    ax.set_xlabel(xlabel="Theoretical Quantiles")
-    ax.set_ylabel(ylabel="Ordered Values")
+    ax.set_xlabel(xlabel=xlabel)
+    ax.set_ylabel(ylabel=ylabel2)
     ds.despine(ax=ax)
-    fig.savefig(fname=Path("box_cox_transformed.svg", format="svg"))
+    fig.savefig(fname=path_box_cox_transformed)
     # test
     fig, ax = ds.probability_plot(data=boxcox)
     fig.savefig(fname=Path("test_box_cox.svg", format="svg"))
