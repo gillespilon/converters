@@ -144,14 +144,14 @@ def main():
     # two row, one column histograms sample one, sample two
     fig, (ax1, ax2) = plt.subplots(nrows=2, ncols=1, sharex=True, sharey=True)
     mid = (fig.subplotpars.right + fig.subplotpars.left) / 2
-    fig.suptitle(t="Histograms", fontweight="bold", x=mid)
+    fig.suptitle(t="Histograms", x=mid)
     ax1.hist(x=y_sample_one, bins=16)
-    ax1.set_title(label="Sample one", fontweight="bold")
-    ax1.set_ylabel("Count", fontweight="bold")
+    ax1.set_title(label="Sample one")
+    ax1.set_ylabel("Count")
     ax2.hist(x=y_sample_two, bins=16)
-    ax2.set_title(label="Sample two", fontweight="bold")
-    ax2.set_xlabel("Y (units)", fontweight="bold")
-    ax2.set_ylabel("Count", fontweight="bold")
+    ax2.set_title(label="Sample two")
+    ax2.set_xlabel("Y (units)")
+    ax2.set_ylabel("Count")
     ds.despine(ax=ax1)
     ds.despine(ax=ax2)
     fig.savefig(fname="histograms_sample_one_sample_two.svg", format="svg")
@@ -160,14 +160,10 @@ def main():
         caption="histograms_sample_one_sample_two.svg"
     )
     # box and whisker plot sample one
-    fig, ax = ds.plot_boxplot(
-        series=y_sample_one,
-        notch=True,
-        showmeans=True
-    )
-    ax.set_title(label="Box and whisker plot\nSample one", fontweight="bold")
-    ax.set_xticks(ticks=[1], labels=["Sample one"], fontweight="bold")
-    ax.set_ylabel("Y (units)", fontweight="bold")
+    fig, ax = ds.plot_boxplot(series=y_sample_one, notch=True, showmeans=True)
+    ax.set_title(label="Box and whisker plot\nSample one")
+    ax.set_xticks(ticks=[1], labels=["Sample one"])
+    ax.set_ylabel("Y (units)")
     ds.despine(ax=ax)
     fig.savefig(fname="box_and_whisker_sample_one.svg", format="svg")
     ds.html_figure(
@@ -175,14 +171,10 @@ def main():
         caption="box_and_whisker_sample_one.svg"
     )
     # box and whisker plot sample two
-    fig, ax = ds.plot_boxplot(
-        series=y_sample_two,
-        notch=True,
-        showmeans=True
-    )
-    ax.set_title(label="Box and whisker plot\nSample two", fontweight="bold")
-    ax.set_xticks(ticks=[1], labels=["Sample two"], fontweight="bold")
-    ax.set_ylabel("Y (units)", fontweight="bold")
+    fig, ax = ds.plot_boxplot(series=y_sample_two, notch=True, showmeans=True)
+    ax.set_title(label="Box and whisker plot\nSample two")
+    ax.set_xticks(ticks=[1], labels=["Sample two"])
+    ax.set_ylabel("Y (units)")
     ds.despine(ax=ax)
     fig.savefig(fname="box_and_whisker_sample_two.svg", format="svg")
     ds.html_figure(
@@ -193,15 +185,13 @@ def main():
     fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2, sharey=True)
     ax1.boxplot(x=y_sample_one, notch=True, showmeans=True)
     ax2.boxplot(x=y_sample_two, notch=True, showmeans=True)
-    ax1.set_xticks(ticks=[1], labels=["Sample one"], fontweight="bold")
-    ax2.set_xticks(ticks=[1], labels=["Sample two"], fontweight="bold")
-    ax1.set_title(label="Sample one", fontweight="bold")
-    ax2.set_title(label="Sample two", fontweight="bold")
-    ax1.set_ylabel("Y (units)", fontweight="bold")
+    ax1.set_xticks(ticks=[1], labels=["Sample one"])
+    ax2.set_xticks(ticks=[1], labels=["Sample two"])
+    ax1.set_title(label="Sample one")
+    ax2.set_title(label="Sample two")
+    ax1.set_ylabel("Y (units)")
     mid = (fig.subplotpars.right + fig.subplotpars.left) / 2
-    fig.suptitle(
-        t="Box-and-whisker plots", fontweight="bold", x=mid
-    )
+    fig.suptitle(t="Box-and-whisker plots", x=mid)
     ds.despine(ax=ax1)
     ds.despine(ax=ax2)
     fig.savefig(
@@ -213,9 +203,9 @@ def main():
     )
     # scatter plot sample one
     fig, ax = ds.plot_scatter_y(y=y_sample_one)
-    ax.set_title(label="Scatter plot\nSample one", fontweight="bold")
-    ax.set_xlabel("X (Sample order)", fontweight="bold")
-    ax.set_ylabel("Y (units)", fontweight="bold")
+    ax.set_title(label="Scatter plot\nSample one")
+    ax.set_xlabel("X (Sample order)")
+    ax.set_ylabel("Y (units)")
     ds.despine(ax=ax)
     fig.savefig(fname="scatter_sample_one.svg", format="svg")
     ds.html_figure(
@@ -224,9 +214,9 @@ def main():
     )
     # scatter plot sample two
     fig, ax = ds.plot_scatter_y(y=y_sample_two)
-    ax.set_title(label="Scatter plot\nSample two", fontweight="bold")
-    ax.set_xlabel("X (Sample order)", fontweight="bold")
-    ax.set_ylabel("Y (units)", fontweight="bold")
+    ax.set_title(label="Scatter plot\nSample two")
+    ax.set_xlabel("X (Sample order)")
+    ax.set_ylabel("Y (units)")
     ds.despine(ax=ax)
     fig.savefig(fname="scatter_sample_two.svg", format="svg")
     ds.html_figure(
@@ -239,18 +229,18 @@ def main():
         y_sample_one, marker=".", markersize=8, linestyle="None",
         color=colour_one
     )
-    fig.suptitle(t="Scatter plots", fontweight="bold", fontsize=14)
-    ax1.set_title(label="Sample one", fontweight="bold", fontsize=12)
-    ax1.set_ylabel(ylabel="Y (units)", fontweight="bold")
+    fig.suptitle(t="Scatter plots")
+    ax1.set_title(label="Sample one")
+    ax1.set_ylabel(ylabel="Y (units)")
     ax1.set_xlabel(
-        xlabel="X (Sample order)", fontweight="bold", fontsize=10
+        xlabel="X (Sample order)"
         )
     ax2.plot(
         y_sample_two, marker=".", markersize=8, linestyle="None",
         color=colour_one
     )
-    ax2.set_xlabel(xlabel="X (Sample order)", fontweight="bold", fontsize=10)
-    ax2.set_title(label="Sample two", fontweight="bold", fontsize=12)
+    ax2.set_xlabel(xlabel="X (Sample order)")
+    ax2.set_title(label="Sample two")
     ds.despine(ax=ax1)
     ds.despine(ax=ax2)
     fig.savefig(fname="scatter_sample_one_sample_two.svg", format="svg")
@@ -261,12 +251,8 @@ def main():
     # normal probability plot sample one
     fig, ax = plt.subplots(nrows=1, ncols=1)
     fig, ax = ds.probability_plot(data=y_sample_one, plot=ax)
-    ax.set_title(
-        label="Normal Probability Plot\nSample one",
-        fontweight="bold", fontsize=10
-    )
-    ax.yaxis.get_label().set(fontweight="bold")
-    ax.set_xlabel(xlabel="Theoretical Quantiles", fontweight="bold")
+    ax.set_title(label="Normal Probability Plot\nSample one")
+    ax.set_xlabel(xlabel="Theoretical Quantiles")
     ds.despine(ax=ax)
     fig.savefig(fname="normal_probability_plot_sample_one.svg", format="svg")
     ds.html_figure(
@@ -276,13 +262,9 @@ def main():
     # normal probability plot sample two
     fig, ax = plt.subplots(nrows=1, ncols=1)
     fig, ax = ds.probability_plot(data=y_sample_two, plot=ax)
-    ax.set_title(
-        label="Normal Probability Plot\nSample two",
-        fontweight="bold", fontsize=10
-    )
+    ax.set_title(label="Normal Probability Plot\nSample two")
     ds.despine(ax=ax)
-    ax.yaxis.get_label().set(fontweight="bold")
-    ax.set_xlabel(xlabel="Theoretical Quantiles", fontweight="bold")
+    ax.set_xlabel(xlabel="Theoretical Quantiles")
     fig.savefig(fname="normal_probability_plot_sample_two.svg", format="svg")
     ds.html_figure(
         file_name="normal_probability_plot_sample_two.svg",
