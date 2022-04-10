@@ -133,11 +133,9 @@ def main():
     fig, ax = ds.plot_histogram(
         series=y_sample_two, number_bins=16, bin_range=(28, 44), bin_width=1
     )
-    ax.set_xlabel("Y (units)", fontweight="bold")
-    ax.set_ylabel("Count", fontweight="bold")
-    ax.set_title(
-        label="Histogram of sample two", fontweight="bold", fontsize=10
-    )
+    ax.set_xlabel("Y (units)")
+    ax.set_ylabel("Count")
+    ax.set_title(label="Histogram of sample two")
     fig.savefig(fname="histogram_sample_two.svg", format="svg")
     ds.html_figure(
         file_name="histogram_sample_two.svg",
