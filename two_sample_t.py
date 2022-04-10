@@ -164,7 +164,6 @@ def main():
     ax.set_title(label="Box and whisker plot\nSample one")
     ax.set_xticks(ticks=[1], labels=["Sample one"])
     ax.set_ylabel("Y (units)")
-    ds.despine(ax=ax)
     fig.savefig(fname="box_and_whisker_sample_one.svg", format="svg")
     ds.html_figure(
         file_name="box_and_whisker_sample_one.svg",
@@ -175,7 +174,6 @@ def main():
     ax.set_title(label="Box and whisker plot\nSample two")
     ax.set_xticks(ticks=[1], labels=["Sample two"])
     ax.set_ylabel("Y (units)")
-    ds.despine(ax=ax)
     fig.savefig(fname="box_and_whisker_sample_two.svg", format="svg")
     ds.html_figure(
         file_name="box_and_whisker_sample_two.svg",
