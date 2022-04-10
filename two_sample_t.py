@@ -44,6 +44,7 @@ import pandas as pd
 
 
 def main():
+    start_time = time.perf_counter()
     # define parameters
     filetypes = [("csv and feather files", ".csv .CSV .feather .FEATHER")]
     path_in_title = "Select csv or feather file to read"
@@ -63,7 +64,6 @@ def main():
     y_sample_two = df["y"][df["x"] == 2]
     print("Data file", path_in)
     print()
-    start_time = time.perf_counter()
     validate_data(
         df=df,
         path_in=path_in,
