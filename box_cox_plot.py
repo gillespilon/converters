@@ -28,18 +28,13 @@ def main():
     output_url = "box_cox_plot.html"
     xlabel = "Theoretical Quantiles"
     header_title = "Box-Cox Plot"
-    header_id = "box_cox_plot"
+    header_id = "box-cox-plot"
     ylabel2 = "Ordered Values"
     la, lb = -20, 20
     original_stdout = ds.html_begin(
-        output_url=output_url,
-        header_title=header_title,
-        header_id=header_id
+        output_url=output_url, header_title=header_title, header_id=header_id
     )
-    ds.script_summary(
-        script_path=Path(__file__),
-        action="started at"
-    )
+    ds.script_summary(script_path=Path(__file__), action="started at")
     ds.style_graph()
     # replace next line(s) with your data Series
     # df = ds.read_file(file_name=Path("us_mpg.csv"))
