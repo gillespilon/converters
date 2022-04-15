@@ -6,9 +6,19 @@ statement and within the variable definition.
 
 from dateutil.relativedelta import relativedelta
 from datetime import date, datetime, timedelta
+from pathlib import Path
+
+import datasense as ds
 
 
 def main():
+    header_title = "Date, Time, and f-string"
+    output_url = "date_time_fstring.html"
+    header_id = "date-time-fstring"
+    original_stdout = ds.html_begin(
+        output_url=output_url, header_title=header_title, header_id=header_id
+    )
+    ds.script_summary(script_path=Path(__file__), action="started at")
     start = date.today()
     print("Determine current date with `datetime.date.today()`")
     print(f"{start:%Y-%m-%d}")
@@ -93,6 +103,8 @@ def main():
     print("Determine ISO time in a simpler way")
     print(iso_time)
     print()
+    ds.script_summary(script_path=Path(__file__), action="finished at")
+    ds.html_end(original_stdout=original_stdout, output_url=output_url)
 
 
 if __name__ == "__main__":
