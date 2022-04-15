@@ -9,6 +9,8 @@ import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import pandas as pd
 
+import datasense as ds
+
 
 def main():
     data = {
@@ -24,6 +26,7 @@ def main():
     # https://matplotlib.org/stable/gallery/color/color_demo.html
     # https://matplotlib.org/stable/tutorials/colors/colors.html
     colour_one, colour_two = '#0077bb', '#ee7733'
+    ds.style_graph()
     # create DataFrames
     # https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html
     # pydoc pandas.DataFrame
@@ -48,22 +51,18 @@ def main():
     # https://matplotlib.org/stable/api/_as_gen/
     #     matplotlib.axes.Axes.set_title.html
     # pydoc matplotlib.axes.Axes.set_title
-    ax1.set_title(
-        label='Y1, Y2 vs X scatter plot', fontweight='bold', fontsize=12
-    )
+    ax1.set_title(label='Y1, Y2 vs X scatter plot')
     # add y axis label
     # https://matplotlib.org/stable/api/_as_gen/
     #     matplotlib.axes.Axes.set_ylabel.html
     # pydoc matplotlib.axes.Axes.set_ylabel
-    ax1.set_ylabel(ylabel='y1', fontweight='bold', color=colour_one)
+    ax1.set_ylabel(ylabel='y1', color=colour_one)
     ax1.tick_params(axis='y', colors=colour_one)
     # add x axis label
     # https://matplotlib.org/stable/api/_as_gen/
     #     matplotlib.axes.Axes.set_xlabel.html
     # pydoc matplotlib.axes.Axes.set_xlabel
-    ax1.set_xlabel(
-        xlabel='Date (yyyy-mm-dd)', fontweight='bold', fontsize=10
-    )
+    ax1.set_xlabel(xlabel='Date (yyyy-mm-dd)')
     # format x axis labels as dates
     # https://matplotlib.org/stable/api/
     #     _as_gen/matplotlib.axis.Axis.set_major_formatter.html
@@ -90,7 +89,7 @@ def main():
     # https://matplotlib.org/stable/api/_as_gen/
     #     matplotlib.axes.Axes.set_ylabel.html
     # pydoc matplotlib.axes.Axes.set_ylabel
-    ax2.set_ylabel(ylabel='y2', fontweight='bold', color=colour_two)
+    ax2.set_ylabel(ylabel='y2', color=colour_two)
     ax2.tick_params(axis='y', colors=colour_two)
     # change color of axis spine
     for ax, spine, colour in zip(
