@@ -13,7 +13,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 | convert_html_to_docx.py                | Convert a directory of .html files to .docx files. Convert internal .html URLs to .docx URLs. Leave external .html URLs as is.  |
 | country_codes_names_domains.py         | Get country codes, names, domains from a Wikipedia table and create a file.                                                     |
 | create_qr_code.py                      | Create QR codes and save as .svg and .png files.                                                                                |
-| date_time.py                           | Explore date and time function with f-string.                                                                                   |
+| date_time_fstring.py                   | Explore date and time function with f-string.                                                                                   |
 | describe_data_file.py                  | Describe .csv and .feather files.                                                                                               |
 | explore_functions.py                   | Explore functions using inspect.signature.                                                                                      |
 | feather.py                             | Save a DataFrame to a .feather file. Read a .feather file into a DataFrame.                                                     |
