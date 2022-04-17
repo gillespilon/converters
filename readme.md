@@ -17,6 +17,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 | describe_data_file.py                  | Describe .csv and .feather files.                                                                                               |
 | explore_functions.py                   | Explore functions using inspect.signature.                                                                                      |
 | feather.py                             | Save a DataFrame to a .feather file. Read a .feather file into a DataFrame.                                                     |
+| gantt_chart.py                         | Gantt chart                                                                                                                     |
 | move_directories.py                    | Move directories to keep history.                                                                                               |
 | normal_probability_plot.py             | Create normal probability plot of a Series of data.                                                                             |
 | play_sound.py                          | Play an mp3 file with Python.                                                                                                   |
