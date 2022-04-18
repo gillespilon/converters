@@ -8,6 +8,7 @@ Format the x axis as dates and rotate.
 from matplotlib.ticker import FormatStrFormatter
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
+import datasense as ds
 import pandas as pd
 
 
@@ -24,10 +25,10 @@ def main():
     spines_to_remove = ['top', 'right']
     # https://matplotlib.org/stable/gallery/color/color_demo.html
     # https://matplotlib.org/stable/tutorials/colors/colors.html
-    colour_one = '#0077bb'
     # create DataFrames
     # https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html
     # pydoc pandas.DataFrame
+    ds.style_graph()
     df = pd.DataFrame(data=data).astype(
         dtype={'x': 'datetime64[ns]', 'y': 'int64'}
     )
@@ -36,7 +37,7 @@ def main():
     # class matplotlib.figure.Figure
     # https://matplotlib.org/stable/api/axes_api.html
     # class matplotlib.axes.Axes
-    # pydoc matplotlib.pyplot.subplots
+    # pydoc matplotlib.figure.Figure.subplots
     fig, ax = plt.subplots(nrows=1, ncols=1)
     # remove two spines
     # https://matplotlib.org/stable/api/spines_api.html
@@ -44,27 +45,22 @@ def main():
     ax.spines[spines_to_remove].set_visible(b=False)
     # https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html
     # pydoc matplotlib.axes.Axes.plot
-    ax.plot(
-        df['x'], df['y'], linestyle='None', marker='.', markersize=8,
-        color=colour_one
-    )
+    ax.plot(df['x'], df['y'], linestyle='None')
     # add Axes title
     # https://matplotlib.org/stable/api/_as_gen/
     #     matplotlib.axes.Axes.set_title.html
     # pydoc matplotlib.axes.Axes.set_title
-    ax.set_title(label='Y vs X scatter plot', fontweight='bold', fontsize=12)
+    ax.set_title(label='Y vs X scatter plot')
     # add y axis label
     # https://matplotlib.org/stable/api/_as_gen/
     #     matplotlib.axes.Axes.set_ylabel.html
     # pydoc matplotlib.axes.Axes.set_ylabel
-    ax.set_ylabel(ylabel='y', fontweight='bold')
+    ax.set_ylabel(ylabel='y')
     # add x axis label
     # https://matplotlib.org/stable/api/_as_gen/
     #     matplotlib.axes.Axes.set_xlabel.html
     # pydoc matplotlib.axes.Axes.set_xlabel
-    ax.set_xlabel(
-        xlabel='Date (yyyy-mm-dd)', fontweight='bold', fontsize=10
-    )
+    ax.set_xlabel(xlabel='Date (yyyy-mm-dd)')
     # format x axis tick labels
     # "label" is of type Text, which has a method "set"
     # https://matplotlib.org/stable/api/text_api.html
@@ -86,3 +82,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
