@@ -6,7 +6,6 @@ Format the x axis as dates and rotate.
 """
 
 from matplotlib.ticker import StrMethodFormatter
-from matplotlib.ticker import FormatStrFormatter
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import datasense as ds
