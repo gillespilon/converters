@@ -44,9 +44,9 @@ def main():
     # create list of paths to save
     paths_out = [
         Path(
-            directory_feather_files, paths_in[x].name
+            directory_feather_files, paths_in[count].name
         ).with_suffix(extension_out)
-        for x in range(len(paths_in))
+        for count, element in enumerate(paths_in)
     ]
     print("List of .feather files")
     print()
