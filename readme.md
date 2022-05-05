@@ -18,6 +18,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 | explore_functions.py                   | Explore functions using inspect.signature.                                                                                      |
 | feather.py                             | Save a DataFrame to a .feather file. Read a .feather file into a DataFrame.                                                     |
 | gantt_chart.py                         | Gantt chart                                                                                                                     |
+| hashlib_sha256.py                      | Examples of using hashlib.py module as part of a blockchain.                                                                    |
 | histogram.py                           | Histogram with bin size adjustment and tick formatting.                                                                         |
 | move_directories.py                    | Move directories to keep history.                                                                                               |
 | normal_probability_plot.py             | Create normal probability plot of a Series of data.                                                                             |
