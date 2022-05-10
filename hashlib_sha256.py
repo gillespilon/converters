@@ -54,7 +54,7 @@ def main():
     print()
     # hash an svg file
     print("hash an svg file")
-    path_svg_file = Path("<path.svg>")
+    path_svg_file = Path("<file>.svg")
     hash_object = hashlib.sha256()
     with open(file=path_svg_file, mode="rb") as f:
         hash_object.update(f.read(block_size))
@@ -63,7 +63,7 @@ def main():
     print()
     # hash a png file
     print("hash a png file")
-    path_png_file = Path("<path.png>")
+    path_png_file = Path("<file>.png")
     hash_object = hashlib.sha256()
     with open(file=path_png_file, mode="rb") as f:
         hash_object.update(f.read(block_size))
@@ -72,7 +72,7 @@ def main():
     print()
     # hash a pdf file
     print("hash a pdf file")
-    path_pdf_file = Path("<path.pdf>")
+    path_pdf_file = Path("<file>.pdf")
     hash_object = hashlib.sha256()
     with open(file=path_pdf_file, mode="rb") as f:
         hash_object.update(f.read(block_size))
@@ -81,7 +81,7 @@ def main():
     print()
     # hash an excel file
     print("hash an excel file")
-    path_excel_file = Path("<path.xlsx>")
+    path_excel_file = Path("<file>.xlsx")
     hash_object = hashlib.sha256()
     with open(file=path_excel_file, mode="rb") as f:
         hash_object.update(f.read(block_size))
