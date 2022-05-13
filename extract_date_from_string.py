@@ -11,6 +11,7 @@ def main():
     regex = r"\d{1,2}\/\d{1,2}\/\d{2,4}"
     extracted_date = re.search(regex, text)
     print(extracted_date.group(0))
+    print()
     text = "Hello world 1956-06-08 to new life."
     regex = r"\d{2,4}-\d{1,2}-\d{1,2}"
     extracted_date = re.search(regex, text)
