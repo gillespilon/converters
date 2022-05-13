@@ -18,6 +18,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 | date_time_fstring.py                   | Explore date and time function with f-string.                                                                                   |
 | describe_data_file.py                  | Describe .csv and .feather files.                                                                                               |
 | explore_functions.py                   | Explore functions using inspect.signature.                                                                                      |
+| extract_date_from_string.py            | Extract a date from a string                                                                                                    |
 | feather.py                             | Save a DataFrame to a .feather file. Read a .feather file into a DataFrame.                                                     |
 | gantt_chart.py                         | Gantt chart                                                                                                                     |
 | hashlib_sha256.py                      | Examples of using hashlib.py module as part of a blockchain.                                                                    |
