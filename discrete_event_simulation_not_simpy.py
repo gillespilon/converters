@@ -4,6 +4,9 @@ Example of discrete-event simulation without using SimPy.
 
 Pros: simple to understand and create
 Cons: takes a long time to run for real-life situation
+
+Reference:
+https://python.plainenglish.io/how-to-build-simulation-models-with-python-219b33ce9625
 """
 
 from datetime import datetime
