@@ -36,5 +36,6 @@ This repository contains scripts to illustrate skills and competencies in those 
 | scatter_plots_side_by_side_labelled.py | Dual, side-by-side, labelled scatter plots.                                                                                     |
 | two_sample_t_test.py                   | Comprehensive statistical, graphical analysis of two-sample t test.                                                             |
 | waiter_simpy.py                        | SimPy simulation of a waiter in a restaurant. 1 of 3.                                                                           |
+| customer_simpy.py                      | SimPy simulation of waiters, customers in a restaurant. 2 of 3.                                                                 |
 | yeo_johnson_plot.py                    | Create Yeo-Johnson normality plot.                                                                                              |
 | valentine.py                           | Create a Valentine to your love.                                                                                                |
