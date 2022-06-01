@@ -7,6 +7,8 @@ The waiter (process) serves in a restaurant (environment).
 The waiter takes orders from customers, gives orders to cooks, and serves food
 to customers.
 
+This is the first of three restaurant simulations.
+
 References
 https://towardsdatascience.com/simulate-real-life-events-in-python-using-simpy-e6d9152a102f
 https://simpy.readthedocs.io/en/latest/contents.html
