@@ -39,3 +39,4 @@ This repository contains scripts to illustrate skills and competencies in those 
 | customer_simpy.py                      | SimPy simulation of waiters, customers in a restaurant. 2 of 3.                                                                 |
 | yeo_johnson_plot.py                    | Create Yeo-Johnson normality plot.                                                                                              |
 | valentine.py                           | Create a Valentine to your love.                                                                                                |
+| watch_directory.py                     | Watch a directory for new files, modified files.                                                                                |
