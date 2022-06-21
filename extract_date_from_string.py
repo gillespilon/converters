@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 """
-Use Python re to extract a date from a list of strings.
+Use Python re to extract a date from a list or tuple of strings.
 
 The code is entirely mine, not copied from anywhere.
 
