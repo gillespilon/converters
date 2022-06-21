@@ -19,7 +19,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 | describe_data_file.py                  | Describe .csv and .feather files.                                                                                               |
 | discrete_event_simulation_not_simpy.py | Perform a discrete event simulation of a simple process using “sleep” rather than SimPy.                                        |
 | explore_functions.py                   | Explore functions using inspect.signature.                                                                                      |
-| extract_date_from_string.py            | Extract a date from a string.                                                                                                   |
+| extract_date_from_list_tuple.py        | Extract a date from a list or tuple of strings.                                                                                 |
 | feather.py                             | Save a DataFrame to a .feather file. Read a .feather file into a DataFrame.                                                     |
 | gantt_chart.py                         | Gantt chart                                                                                                                     |
 | hashlib_sha256.py                      | Examples of using hashlib.py module as part of a blockchain.                                                                    |
