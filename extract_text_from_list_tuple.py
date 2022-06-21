@@ -11,7 +11,8 @@ import re
 
 
 def main():
-    items = ("abcdefg", "abcde", "abc", "xyz")
+    items = ["abcdefg", "abcde", "abc", "xyz"]
+    # items = ("abcdefg", "abcde", "abc", "xyz")
     regex = re.compile(pattern=r"abc")
     matches = [item for item in items if regex.fullmatch(string=item)]
     print(matches)
