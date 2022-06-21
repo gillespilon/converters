@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 """
-Use Python re to match letters in a list of strings.
+Use Python re to match letters from a list or tuples of strings.
 
 The code is entirely mine, not copied from anywhere.
 
