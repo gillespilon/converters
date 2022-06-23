@@ -11,51 +11,42 @@ import re
 
 
 def main():
-    items = ["abcdefg", "abcde", "abc", "xyz"]
-    # items = ("abcdefg", "abcde", "abc", "xyz")
-    pattern1 = r"abc"
-    pattern2 = r"abcd*e*f*g*"
-    pattern3 = r"[^a][b-c]"
-    pattern4 = r"[^a][b-c]d?e?"
+    items = [
+        "abcdefg", "abcde", "abc", "xyz", "1.  abc", "2.   abc",
+        "3.      abc", "4.abc"
+    ]
+    # items = (
+    #     "abcdefg", "abcde", "abc", "xyz", "1.  abc", "2.   abc",
+    #     "3.      abc", "4.abc"
+    # )
+    pattern1 = r"\babc\b"
+    pattern2 = r"\babcd*e*f*g*\b"
     regex = re.compile(pattern=pattern1)
-    matches = [item for item in items if regex.fullmatch(string=item)]
+    matches = [item for item in items if regex.findall(string=item)]
     print(matches)
+    # [' abc ', '1.  abc', '2.   abc', '3.      abc', '4.abc']
     matches = [
-        regex.search(string=item).group(0) for item in items
-        if regex.search(string=item)
+        regex.findall(string=item) for item in items
+        if regex.findall(string=item)
     ]
     print(matches)
-    # ['abc']
+    # [['abc'], ['abc'], ['abc'], ['abc'], ['abc']]
+    matches = [item for sublist in matches for item in sublist]
+    print(matches)
+    # ['abc', 'abc', 'abc', 'abc', 'abc']
     regex = re.compile(pattern=pattern2)
     matches = [item for item in items if regex.fullmatch(string=item)]
     print(matches)
     # ['abcdefg', 'abcde', 'abc']
     matches = [
-        regex.search(string=item).group(0) for item in items
-        if regex.search(string=item)
+        regex.findall(string=item) for item in items
+        if regex.fullmatch(string=item)
     ]
     print(matches)
-    # ['abcdefg', 'abcde', 'abc']
-    regex = re.compile(pattern=pattern3)
-    matches = [item for item in items if regex.search(string=item)]
+    # [['abcdefg'], ['abcde'], ['abc']]
+    matches = [item for sublist in matches for item in sublist]
     print(matches)
     # ['abcdefg', 'abcde', 'abc']
-    matches = [
-        regex.search(string=item).group(0) for item in items
-        if regex.search(string=item)
-    ]
-    print(matches)
-    # ['bc', 'bc', 'bc']
-    regex = re.compile(pattern=pattern4)
-    matches = [item for item in items if regex.search(string=item)]
-    print(matches)
-    # ['abcdefg', 'abcde', 'abc']
-    matches = [
-        regex.search(string=item).group(0) for item in items
-        if regex.search(string=item)
-    ]
-    print(matches)
-    # ['bcde', 'bcde', 'bc']
 
 
 if __name__ == "__main__":
