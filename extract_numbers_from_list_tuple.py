@@ -2,9 +2,6 @@
 """
 Use Python re to extract numbers from a list or tuple of strings.
 
-The code is entirely mine, not copied from anywhere.
-
-The subject is based on https://regexone.com/lesson/letters_and_digits.
 """
 
 import re
