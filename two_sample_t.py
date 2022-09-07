@@ -24,7 +24,7 @@ Example of how a data file should look:
     2   31
     2   34
 
-Validate the data set for dtypes, NaNs, and length.
+Validate the dataset for dtypes, NaNs, and length.
 
 Check assumptions of normality, homogeneity of variance using parametric
 and non-parametric methods.
