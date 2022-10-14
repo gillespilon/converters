@@ -5,11 +5,19 @@ Explore functions using inspect.signature.
 
 from typing import List, Tuple, Union
 
+from sklearn.compose import make_column_transformer
+from sklearn.pipeline import make_pipeline
 import datasense as ds
 
 
 def main():
-    functions = [function_name_syntax, function_name]
+    # Explore a list of functions within a script and external
+    functions = [
+        function_name_syntax,
+        function_name,
+        make_column_transformer,
+        make_pipeline
+    ]
     output_url = "explore_functions.html"
     header_title = "Explore functions"
     header_id = "explore-functions"
