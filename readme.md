@@ -37,6 +37,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 | scatter_plots_twin_y_axes.py           | Two scatter plots, single x axis, dual y axes, labelled.                                                                        |
 | scatter_plots_side_by_side.py          | Dual, side-by-side, simple scatter plots.                                                                                       |
 | scatter_plots_side_by_side_labelled.py | Dual, side-by-side, labelled scatter plots.                                                                                     |
+| statsmodels_linear_regression.py       | Linear regression, graphical analysis, confidence and prediction intervals.                                                     |
 | two_sample_t_test.py                   | Comprehensive statistical, graphical analysis of two-sample t test.                                                             |
 | waiter_simpy.py                        | SimPy simulation of a waiter in a restaurant. 1 of 3.                                                                           |
 | customer_simpy.py                      | SimPy simulation of waiters, customers in a restaurant. 2 of 3.                                                                 |
