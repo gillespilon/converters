@@ -25,6 +25,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 | extract_text_from_list_tuple.py           | Extract text from a list or tuple of strings.                                                                                   |
 | feather.py                                | Save a DataFrame to a .feather file. Read a .feather file into a DataFrame.                                                     |
 | gantt_chart.py                            | Gantt chart                                                                                                                     |
+| generic_email.py                          | Generic email with multiple receivers, multiple attachments, plain text body; using external files                              |
 | hashlib_sha256.py                         | Examples of using hashlib.py module as part of a blockchain.                                                                    |
 | histogram.py                              | Histogram with bin size adjustment and tick formatting.                                                                         |
 | move_directories.py                       | Move directories to keep history.                                                                                               |
