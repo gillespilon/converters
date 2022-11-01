@@ -34,13 +34,15 @@ def main():
         header_title=header_title,
         header_id=header_id
     )
-    data = {
-        x_column: [10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5],
-        y_column: [
-            8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68
-        ]
-    }
-    df = pd.DataFrame(data=data)
+    df = pd.DataFrame(
+        data={
+            x_column: [10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5],
+            y_column: [
+                8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82,
+                5.68
+            ]
+        }
+    )
     df_predictions, fitted_model = ds.linear_regression(
         df=df,
         x_column=[x_column],
