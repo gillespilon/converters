@@ -5,6 +5,8 @@ Code to delete rows based on various criteria.
 dropna works for pd.NaT, np.NaN, and None. It does not work for "" which
 occurs in csv files from Excel.
 
+isna and notna work for pd.NaT, np.NaN, and None. They do not work for "".
+
 isin in combination with loc works for pd.NaT, np.NaN, None, and "".`
 """
 
@@ -198,6 +200,59 @@ def main():
         how="any",
         subset=columns_to_check
     )
+    print(dfa)
+    print()
+    print("isna, notna")
+    print("------")
+    print()
+    print(
+        "isna works for pd.NaT, np.NaN, and None. "
+        "It does not work for ''. "
+        "all_space and non_space should be all True."
+    )
+    print()
+    df = pd.DataFrame(
+        dict(
+            integers=[1, 2, 3, 4, 5, 6, 7],
+            floats=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
+            text=["A", "B", "C", "D", "E", "F", "G"],
+            dates=[
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                pd.Timestamp("1956-06-08")
+            ],
+            all_nan=[np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
+            all_nat=[pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT],
+            all_none=[None, None, None, None, None, None, None],
+            all_space=["", "", "", "", "", "", ""],
+            nan_space=[np.NaN, "", np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
+            nan_none=[np.NaN, None, np.NaN, np.NaN, None, np.NaN, None],
+            mixed=[None, np.NaN, pd.NaT, pd.NaT, None, np.NaN, pd.NaT]
+        )
+    )
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        df = df.isna()
+    """))
+    dfa = df.copy()
+    dfa = dfa.isna()
+    print(dfa)
+    print()
+    print(
+        "notna works for pd.NaT, np.NaN, and None. "
+        "It does not work for ''. "
+        "all_space and non_space should be all False."
+    )
+    print()
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        df = df.notna()
+    """))
+    dfa = df.copy()
+    dfa = dfa.notna()
     print(dfa)
     print()
     stop_time = time.perf_counter()
