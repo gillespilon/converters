@@ -255,6 +255,40 @@ def main():
     dfa = dfa.notna()
     print(dfa)
     print()
+    print("loc, isin")
+    print("---------")
+    print()
+    print("Delete rows where all elements are missing.")
+    print()
+    df = pd.DataFrame(
+        dict(
+            integers=[1, 2, 3, 4, 5, np.NaN, 7],
+            floats=[1.0, 2.0, 3.0, 4.0, 5.0, np.NaN, 7.0],
+            text=["A", "", "", "D", "", "", "G"],
+            dates=[
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                pd.NaT, pd.Timestamp("1956-06-08"),
+                pd.Timestamp("1956-06-08"), pd.NaT,
+                pd.Timestamp("1956-06-08")
+            ],
+            all_nan=[np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
+            all_nat=[pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT],
+            all_none=[None, None, None, None, None, None, None],
+            all_space=["", "", "", "", "", "", ""],
+            nan_space=[np.NaN, "", np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
+            nan_none=[np.NaN, None, np.NaN, np.NaN, None, np.NaN, None],
+            mixed=[None, np.NaN, pd.NaT, pd.NaT, None, np.NaN, pd.NaT]
+        )
+    )
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        df.loc[~(df.shape[1] == df.isin(empty_items).sum(axis=1)), :]
+    """))
+    dfa = df.copy()
+    dfa = dfa.loc[~(dfa.shape[1] == dfa.isin(empty_items).sum(axis=1)), :]
+    print(dfa)
+    print()
     stop_time = time.perf_counter()
     ds.script_summary(
         script_path=Path(__file__),
