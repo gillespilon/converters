@@ -18,11 +18,11 @@ import numpy as np
 
 
 def main():
+    columns_to_check = ["integers", "floats", "text"]
+    empty_items = [np.NaN, pd.NaT, None, ""]
     output_url = "delete_rows.html"
     header_title = "Delete rows"
     header_id = "delete-rows"
-    columns_to_check = ["integers", "floats", "text"]
-    empty_items = [np.NaN, pd.NaT, None, ""]
     start_time = time.perf_counter()
     original_stdout = ds.html_begin(
         output_url=output_url,
@@ -135,6 +135,46 @@ def main():
     df = df.dropna(
         axis="index",
         thresh=4
+    )
+    print(df)
+    print()
+    print(
+        "Delete rows where all elements are missing, in specific columns. "
+        "It fails to delete row 1."
+    )
+    print()
+    df = pd.DataFrame(
+        dict(
+            integers=[1, np.NaN, 3, 4, 5, 6, 7],
+            floats=[1.0, np.NaN, 3.0, 4.0, 5.0, 6.0, 7.0],
+            text=["A", "", "C", "", "E", "F", "G"],
+            dates=[
+                pd.Timestamp("1956-06-08"), pd.NaT,
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                pd.NaT, pd.Timestamp("1956-06-08"),
+                pd.Timestamp("1956-06-08")
+            ],
+            all_nan=[np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
+            all_nat=[pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT],
+            all_none=[None, None, None, None, None, None, None],
+            all_space=["", "", "", "", "", "", ""],
+            nan_space=[np.NaN, "", np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
+            nan_none=[np.NaN, None, np.NaN, np.NaN, None, np.NaN, None],
+            mixed=[None, np.NaN, pd.NaT, pd.NaT, None, np.NaN, pd.NaT]
+        )
+    )
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        columns_to_check = ["integers", "floats", "text"]
+        df = df.dropna(
+            how="all",
+            subset=columns_to_check
+        )
+    """))
+    df = df.dropna(
+        how="all",
+        subset=columns_to_check
     )
     print(df)
     print()
