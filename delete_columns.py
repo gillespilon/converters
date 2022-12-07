@@ -42,6 +42,11 @@ def main():
         "occurs in csv files from Excel."
     )
     print()
+    print(
+        "Delete columns where all elements are missing. It fails to delete "
+        "columns all_space and nan_space."
+    )
+    print()
     df = pd.DataFrame(
         dict(
             integers=[1, 2, 3, 4, 5, 6, 7],
@@ -64,35 +69,75 @@ def main():
     )
     print(df)
     print()
-    print(
-        "Delete columns where all elements are missing. It fails to delete "
-        "columns all_space and nan_space."
-    )
     print(textwrap.dedent("""
         df = df.dropna(
             axis="columns",
             how="all"
         )
     """))
-    df = df.dropna(
+    dfa = df.copy()
+    dfa = dfa.dropna(
         axis="columns",
         how="all"
     )
-    print(df)
+    print(dfa)
     print()
     print(
         "Delete columns where at least one element missing. "
         "It fails to delete column all_space."
     )
+    print()
+    dfa = df.copy()
+    print(dfa)
+    print()
     print(textwrap.dedent("""
         df = df.dropna(
             axis="columns",
             how="any"
         )
     """))
-    df = df.dropna(
+    dfa = dfa.dropna(
         axis="columns",
         how="any"
+    )
+    print(dfa)
+    print()
+    print(
+        "Delete columns where there are less than seven non-missing elements. "
+        "It fails to delete text and all_space."
+    )
+    print()
+    df = pd.DataFrame(
+        dict(
+            integers=[1, 2, 3, 4, np.NaN, 6, 7],
+            floats=[1.0, 2.0, 3.0, np.NaN, 5.0, 6.0, 7.0],
+            text=["A", "B", "C", "D", "", "F", "G"],
+            dates=[
+                pd.Timestamp("1956-06-08"), pd.NaT,
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                pd.Timestamp("1956-06-08")
+            ],
+            all_nan=[np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
+            all_nat=[pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT],
+            all_none=[None, None, None, None, None, None, None],
+            all_space=["", "", "", "", "", "", ""],
+            nan_space=[np.NaN, "", np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
+            nan_none=[np.NaN, None, np.NaN, np.NaN, None, np.NaN, None],
+            mixed=[None, np.NaN, pd.NaT, pd.NaT, None, np.NaN, pd.NaT]
+        )
+    )
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        df = df.dropna(
+            axis="columns",
+            thresh=7
+        )
+    """))
+    df = df.dropna(
+        axis="columns",
+        thresh=7
     )
     print(df)
     print()
