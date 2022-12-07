@@ -42,6 +42,11 @@ def main():
         "occurs in csv files from Excel."
     )
     print()
+    print(
+        "Delete rows where all elements are missing. It deletes row 6 "
+        "but fails to delete row 3."
+    )
+    print()
     df = pd.DataFrame(
         dict(
             integers=[1, 2, 3, None, 5, 6, np.NaN],
@@ -64,11 +69,6 @@ def main():
     )
     print(df)
     print()
-    print(
-        "Delete rows where all elements are missing. It deletes row 6"
-        "but fails to delete row 3."
-    )
-    print()
     print(textwrap.dedent("""
         df = df.dropna(
             axis="index",
@@ -78,6 +78,31 @@ def main():
     df = df.dropna(
         axis="index",
         how="all"
+    )
+    print(df)
+    print()
+    print(
+        "Delete rows where at least one element missing. "
+        "It deletes rows 1, 3, and 6, but fails to delete rows 2 and 4."
+    )
+    df = pd.DataFrame(
+        dict(
+            integers=[1, 2, "", None, 5, 6, np.NaN],
+            floats=[1.0, None, "", np.NaN, 5.0, 6.0, np.NaN],
+            text=["A", "B", "", pd.NaT, "", "F", None]
+        )
+    )
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        df = df.dropna(
+            axis="index",
+            how="any"
+        )
+    """))
+    df = df.dropna(
+        axis="index",
+        how="any"
     )
     print(df)
     print()
