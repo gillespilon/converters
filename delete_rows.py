@@ -289,6 +289,17 @@ def main():
     dfa = dfa.loc[~(dfa.shape[1] == dfa.isin(empty_items).sum(axis=1)), :]
     print(dfa)
     print()
+    print("Delete rows where 8 or more elements are missing missing.")
+    print()
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        df.loc[~((df.isin(empty_items).sum(axis=1)) >= 8), :]
+    """))
+    dfa = df.copy()
+    dfa = dfa.loc[~((dfa.isin(empty_items).sum(axis=1)) >= 8), :]
+    print(dfa)
+    print()
     stop_time = time.perf_counter()
     ds.script_summary(
         script_path=Path(__file__),
