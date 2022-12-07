@@ -140,14 +140,14 @@ def main():
     print()
     print(
         "Delete rows where all elements are missing, in specific columns. "
-        "It fails to delete row 1."
+        "It fails to delete rows 1 and 3."
     )
     print()
     df = pd.DataFrame(
         dict(
-            integers=[1, np.NaN, 3, 4, 5, 6, 7],
-            floats=[1.0, np.NaN, 3.0, 4.0, 5.0, 6.0, 7.0],
-            text=["A", "", "C", "", "E", "F", "G"],
+            integers=[1, np.NaN, 3, 4, 5, 6, np.NaN],
+            floats=[1.0, np.NaN, 3.0, 4.0, 5.0, 6.0, np.NaN],
+            text=["A", "", "C", "", "E", "F", None],
             dates=[
                 pd.Timestamp("1956-06-08"), pd.NaT,
                 pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
@@ -172,11 +172,33 @@ def main():
             subset=columns_to_check
         )
     """))
-    df = df.dropna(
+    dfa = df.copy()
+    dfa = dfa.dropna(
         how="all",
         subset=columns_to_check
     )
+    print(dfa)
+    print()
+    print(
+        "Delete rows where at least one element is missing, "
+        "in specific columns. It fails to delete row 3."
+    )
+    print()
     print(df)
+    print()
+    print(textwrap.dedent("""
+        columns_to_check = ["integers", "floats", "text"]
+        df = df.dropna(
+            how="any",
+            subset=columns_to_check
+        )
+    """))
+    dfa = df.copy()
+    dfa = dfa.dropna(
+        how="any",
+        subset=columns_to_check
+    )
+    print(dfa)
     print()
     stop_time = time.perf_counter()
     ds.script_summary(
