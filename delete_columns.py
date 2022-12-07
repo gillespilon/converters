@@ -177,6 +177,7 @@ def main():
     print(textwrap.dedent("""
         df = df.isna()
     """))
+    dfa = df.copy()
     dfa = dfa.isna()
     print(dfa)
     print()
@@ -193,6 +194,40 @@ def main():
     """))
     dfa = df.copy()
     dfa = dfa.notna()
+    print(dfa)
+    print()
+    print("loc, isin")
+    print("---------")
+    print()
+    print("Delete columns where all elements are missing.")
+    print()
+    df = pd.DataFrame(
+        dict(
+            integers=[1, 2, 3, 4, 5, 6, 7],
+            floats=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
+            text=["A", "B", "C", "D", "E", "F", "G"],
+            dates=[
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                pd.Timestamp("1956-06-08")
+            ],
+            all_nan=[np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
+            all_nat=[pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT],
+            all_none=[None, None, None, None, None, None, None],
+            all_space=["", "", "", "", "", "", ""],
+            nan_space=[np.NaN, "", np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
+            nan_none=[np.NaN, None, np.NaN, np.NaN, None, np.NaN, None],
+            mixed=[None, np.NaN, pd.NaT, pd.NaT, None, np.NaN, pd.NaT]
+        )
+    )
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        df.loc[:, ~df.isin(empty_items).all()]
+    """))
+    dfa = df.copy()
+    dfa = dfa.loc[:, ~dfa.isin(empty_items).all()]
     print(dfa)
     print()
     stop_time = time.perf_counter()
