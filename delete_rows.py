@@ -43,8 +43,7 @@ def main():
     )
     print()
     print(
-        "Delete rows where all elements are missing. It deletes row 6 "
-        "but fails to delete row 3."
+        "Delete rows where all elements are missing. It fails to delete row 3."
     )
     print()
     df = pd.DataFrame(
@@ -83,8 +82,9 @@ def main():
     print()
     print(
         "Delete rows where at least one element missing. "
-        "It deletes rows 1, 3, and 6, but fails to delete rows 2 and 4."
+        "It fails to delete rows 2 and 4."
     )
+    print()
     df = pd.DataFrame(
         dict(
             integers=[1, 2, "", None, 5, 6, np.NaN],
@@ -103,6 +103,38 @@ def main():
     df = df.dropna(
         axis="index",
         how="any"
+    )
+    print(df)
+    print()
+    print(
+        "Delete rows where there are less than four non-missing elements. "
+        "It fails to delete row 4."
+    )
+    print()
+    df = pd.DataFrame(
+        dict(
+            integers=[1, 2, 3, None, 5, 6, np.NaN],
+            floats=[1.0, None, 3.0, 4.0, 5.0, 6.0, np.NaN],
+            text=["A", "B", "C", "D", "", "F", "G"],
+            dates=[
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                None
+            ],
+        )
+    )
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        df = df.dropna(
+            axis="index",
+            thresh=4
+        )
+    """))
+    df = df.dropna(
+        axis="index",
+        thresh=4
     )
     print(df)
     print()
