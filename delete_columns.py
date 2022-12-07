@@ -68,7 +68,6 @@ def main():
         "Delete columns where all elements are missing. It fails to delete "
         "columns all_space and nan_space."
     )
-    print()
     print(textwrap.dedent("""
         df = df.dropna(
             axis="columns",
@@ -78,6 +77,22 @@ def main():
     df = df.dropna(
         axis="columns",
         how="all"
+    )
+    print(df)
+    print()
+    print(
+        "Delete columns where at least one element missing. "
+        "It fails to delete column all_space."
+    )
+    print(textwrap.dedent("""
+        df = df.dropna(
+            axis="columns",
+            how="any"
+        )
+    """))
+    df = df.dropna(
+        axis="columns",
+        how="any"
     )
     print(df)
     print()
