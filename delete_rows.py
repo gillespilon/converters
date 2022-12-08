@@ -21,6 +21,7 @@ import numpy as np
 
 def main():
     columns_to_check = ["integers", "floats", "text"]
+    look_in_columns = ["floats", "text", "dates"]
     empty_items = [np.NaN, pd.NaT, None, ""]
     output_url = "delete_rows.html"
     header_title = "Delete rows"
@@ -309,6 +310,29 @@ def main():
     """))
     dfa = df.copy()
     dfa = dfa.loc[((dfa.shape[1] - dfa.isin(empty_items).sum(axis=1)) >= 4), :]
+    print(dfa)
+    print()
+    print(
+        "Delete rows where all elements are missing in specific columns of "
+        "those rows."
+    )
+    print()
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        look_in_columns = ["floats", "text", "dates"]
+        df.loc[
+            ~((df[look_in_columns].isin(empty_items).sum(axis=1)) ==
+              (len(look_in_columns))),
+            :
+        ]
+    """))
+    dfa = df.copy()
+    dfa = dfa.loc[
+        ~((dfa[look_in_columns].isin(empty_items).sum(axis=1)) ==
+          (len(look_in_columns))),
+        :
+    ]
     print(dfa)
     print()
     stop_time = time.perf_counter()
