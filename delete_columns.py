@@ -268,10 +268,21 @@ def main():
     print(df)
     print()
     print(textwrap.dedent("""
-        df.loc[:, ~df.isin(empty_items).any()]
+        dfa.loc[:, ~(dfa.isin([np.NaN, pd.NaT, None, ""]).sum() >= 3)]
     """))
     dfa = df.copy()
     dfa = dfa.loc[:, ~(dfa.isin([np.NaN, pd.NaT, None, ""]).sum() >= 3)]
+    print(dfa)
+    print()
+    print("Keep columns where at least four elements are not missing.")
+    print()
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        df.loc[:, ((len(df) - df.isin(empty_items).sum()) >= 4)]
+    """))
+    dfa = df.copy()
+    dfa = dfa.loc[:, ((len(dfa) - dfa.isin(empty_items).sum()) >= 4)]
     print(dfa)
     print()
     stop_time = time.perf_counter()
