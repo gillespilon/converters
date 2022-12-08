@@ -335,6 +335,31 @@ def main():
     ]
     print(dfa)
     print()
+    print(
+        "Delete rows where at least one element is missing in specific "
+        "columns of those rows."
+    )
+    print()
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        number_missing = 1
+        look_in_columns = ["floats", "text", "dates"]
+        df.loc[
+            ~((df[look_in_columns].isin(empty_items).sum(axis=1)) >=
+              number_missing),
+            :
+        ]
+    """))
+    dfa = df.copy()
+    number_missing = 1
+    dfa = dfa.loc[
+            ~((dfa[look_in_columns].isin(empty_items).sum(axis=1)) >=
+              number_missing),
+            :
+        ]
+    print(dfa)
+    print()
     stop_time = time.perf_counter()
     ds.script_summary(
         script_path=Path(__file__),
