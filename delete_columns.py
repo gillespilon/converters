@@ -256,9 +256,22 @@ def main():
     print()
     print(textwrap.dedent("""
         df.loc[:, ~df.isin(empty_items).any()]
+        dfa.loc[:, ~(dfa.isin([np.NaN, pd.NaT, None, ""]).sum() != 0)]
     """))
     dfa = df.copy()
     dfa = dfa.loc[:, ~dfa.isin(empty_items).any()]
+    # dfa = dfa.loc[:, ~(dfa.isin([np.NaN, pd.NaT, None, ""]).sum() != 0)]
+    print(dfa)
+    print()
+    print("Delete columns where three or more elements are missing.")
+    print()
+    print(df)
+    print()
+    print(textwrap.dedent("""
+        df.loc[:, ~df.isin(empty_items).any()]
+    """))
+    dfa = df.copy()
+    dfa = dfa.loc[:, ~(dfa.isin([np.NaN, pd.NaT, None, ""]).sum() >= 3)]
     print(dfa)
     print()
     stop_time = time.perf_counter()
