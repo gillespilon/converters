@@ -2,10 +2,8 @@
 """
 Code to delete columns based on various criteria.
 
-dropna works for pd.NaT, np.NaN, and None. It does not work for "" which
-occurs in csv files from Excel.
-
-isna and notna work for pd.NaT, np.NaN, and None. They do not work for "".
+dropna works for pd.NaT, np.NaN, and None. Additional code using .replace
+fixes other missing values.
 
 isin in combination with loc works for pd.NaT, np.NaN, None, and "".`
 """
@@ -40,9 +38,8 @@ def main():
     print("------")
     print()
     print(
-        "dropna works for pd.NaT, np.NaN, and None. "
-        "It does not work for '' which "
-        "occurs in csv files from Excel."
+        "dropna works for pd.NaT, np.NaN, and None. Additional code using "
+        ".replace fixes other missing values."
     )
     print()
     print(
