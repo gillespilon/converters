@@ -14,6 +14,7 @@ from pathlib import Path
 import textwrap
 import time
 
+# from tabulate import tabulate
 import datasense as ds
 import pandas as pd
 import numpy as np
@@ -50,26 +51,63 @@ def main():
     )
     print()
     df = pd.DataFrame(
-        dict(
-            integers=[1, 2, 3, 4, 5, 6, 7],
-            floats=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
-            text=["A", "B", "C", "D", "E", "F", "G"],
+        data=dict(
+            floats=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, np.NaN],
+            text=["A", "B", "C", "D", "E", "F", ""],
             dates=[
                 pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
                 pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
                 pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
-                pd.Timestamp("1956-06-08")
+                pd.NaT
             ],
             all_nan=[np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
             all_nat=[pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT],
             all_none=[None, None, None, None, None, None, None],
-            all_space=["", "", "", "", "", "", ""],
-            nan_space=[np.NaN, "", np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
+            all_space=["", " ", "", " ", "", "", ""],
+            nan_space=[np.NaN, "", " ", np.NaN, np.NaN, np.NaN, np.NaN],
             nan_none=[np.NaN, None, np.NaN, np.NaN, None, np.NaN, None],
-            mixed=[None, np.NaN, pd.NaT, pd.NaT, None, np.NaN, pd.NaT]
+            mixed=[None, np.NaN, pd.NaT, pd.NaT, None, np.NaN, pd.NaT],
+            integers=[1, 2, 3, 4, 5, 6, np.NaN],
         )
+    ).replace(
+        r"^\s+$",
+        np.NaN,
+        regex=True
+    ).replace(
+        "",
+        np.NaN
+    ).astype(
+        dtype={
+            "integers": "Int64",
+            "floats": "float64",
+            "text": "str",
+            "dates": "datetime64[ns]",
+            "all_nan": "float64",
+            "all_nat": "datetime64[ns]",
+            "all_none": "float64",
+            "all_space": "float64",
+            "nan_space": "float64",
+            "nan_none": "float64",
+            "mixed": "datetime64[ns]"
+        }
     )
+    df["dates"] = df["dates"].dt.strftime("%Y-%m-%d")
+    print(pd.isna(df))
+    print()
     print(df)
+    print()
+    # print(
+    #     tabulate(
+    #         tabular_data=df,
+    #         headers='keys',
+    #         tablefmt='plain',
+    #         numalign='right',
+    #         stralign='right',
+    #         showindex=True,
+    #     )
+    # )
+    print()
+    print(df.dtypes)
     print()
     print(textwrap.dedent("""
         df = df.dropna(
