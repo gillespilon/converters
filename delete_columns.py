@@ -46,8 +46,7 @@ def main():
     )
     print()
     print(
-        "Delete columns where all elements are missing. It fails to delete "
-        "columns all_space and nan_space."
+        "Delete columns where all elements are missing."
     )
     print()
     df = pd.DataFrame(
@@ -92,9 +91,9 @@ def main():
         }
     )
     df["dates"] = df["dates"].dt.strftime("%Y-%m-%d")
-    print(pd.isna(df))
-    print()
     print(df)
+    print()
+    print(pd.isna(df))
     print()
     # print(
     #     tabulate(
