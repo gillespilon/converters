@@ -90,7 +90,7 @@ def main():
     )
     print(df)
     print()
-    print(pd.isna(df))
+    print(df.isna())
     print()
     print(df.dtypes)
     print()
