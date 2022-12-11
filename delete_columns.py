@@ -34,18 +34,6 @@ def main():
         script_path=Path(__file__),
         action="started at"
     )
-    print("dropna")
-    print("------")
-    print()
-    print(
-        "dropna works for pd.NaT, np.NaN, and None. Additional code using "
-        ".replace fixes other missing values."
-    )
-    print()
-    print(
-        "Delete columns where all elements are missing."
-    )
-    print()
     df = pd.DataFrame(
         data=dict(
             floats=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, np.NaN],
@@ -88,11 +76,27 @@ def main():
             "mixed": "datetime64[ns]"
         }
     )
+    print("df")
+    print()
     print(df)
+    print()
+    print("df.isna()")
     print()
     print(df.isna())
     print()
+    print("df.dtypes")
+    print()
     print(df.dtypes)
+    print()
+    print("dropna")
+    print("------")
+    print()
+    print(
+        "dropna works for pd.NaT, np.NaN, and None. Additional code using "
+        ".replace fixes other missing values."
+    )
+    print()
+    print("Delete columns where all elements are missing.")
     print()
     print(textwrap.dedent("""
         df = df.dropna(
@@ -107,10 +111,7 @@ def main():
     )
     print(dfa)
     print()
-    print(
-        "Delete columns where at least one element missing. "
-        "It fails to delete column all_space."
-    )
+    print("Delete columns where at least one element missing.")
     print()
     dfa = df.copy()
     print(dfa)
