@@ -49,11 +49,11 @@ def main():
     df = pd.DataFrame(
         data=dict(
             floats=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, np.NaN],
-            text=["A", "B", "C", "D", "E", "F", ""],
+            text=["A", "B", "C", "D", "E", "F", np.NaN],
             dates=[
-                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
-                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
-                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
+                "1956-06-08", "1956-06-08",
+                "1956-06-08", "1956-06-08",
+                "1956-06-08", "1956-06-08",
                 pd.NaT
             ],
             all_nan=[np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
@@ -71,12 +71,13 @@ def main():
         regex=True
     ).replace(
         "",
-        np.NaN
+        np.NaN,
+        regex=True
     ).astype(
         dtype={
             "integers": "Int64",
             "floats": "float64",
-            "text": "str",
+            "text": "object",
             "dates": "datetime64[ns]",
             "all_nan": "float64",
             "all_nat": "datetime64[ns]",
@@ -87,21 +88,9 @@ def main():
             "mixed": "datetime64[ns]"
         }
     )
-    df["dates"] = df["dates"].dt.strftime("%Y-%m-%d")
     print(df)
     print()
     print(pd.isna(df))
-    print()
-    # print(
-    #     tabulate(
-    #         tabular_data=df,
-    #         headers='keys',
-    #         tablefmt='plain',
-    #         numalign='right',
-    #         stralign='right',
-    #         showindex=True,
-    #     )
-    # )
     print()
     print(df.dtypes)
     print()
