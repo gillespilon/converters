@@ -22,7 +22,6 @@ def main():
     output_url = "delete_columns.html"
     header_title = "Delete columns"
     header_id = "delete-columns"
-    columns_to_check = ["integers", "floats", "text"]
     empty_items = [np.NaN, pd.NaT, None, ""]
     start_time = time.perf_counter()
     original_stdout = ds.html_begin(
@@ -76,29 +75,42 @@ def main():
             "mixed": "datetime64[ns]"
         }
     )
-    print("df")
+    print("DataFrame used in all code examples")
     print()
     print(df)
     print()
-    print("df.isna()")
-    print()
-    print(df.isna())
-    print()
-    print("df.notna()")
-    print()
-    print(df.notna())
+    print("Replace spaces and other missing value types in the DataFrame.")
+    print(textwrap.dedent("""
+        df.replace(
+            r"^\s+$",
+            np.NaN,
+            regex=True
+        ).replace(
+            "",
+            np.NaN,
+            regex=True
+        )
+    """))
+    print("Check the column data types")
     print()
     print("df.dtypes")
     print()
     print(df.dtypes)
     print()
+    print("Check for the presence of null-type values")
+    print()
+    print("df.isna()")
+    print()
+    print(df.isna())
+    print()
+    print("Check for the presence of non-null-type values")
+    print()
+    print("df.notna()")
+    print()
+    print(df.notna())
+    print()
     print("dropna")
     print("------")
-    print()
-    print(
-        "dropna works for pd.NaT, np.NaN, and None. Additional code using "
-        ".replace fixes other missing values."
-    )
     print()
     print("Delete columns where all elements are missing.")
     print(textwrap.dedent("""
@@ -130,7 +142,6 @@ def main():
     print()
     print(
         "Delete columns where there are less than five non-missing elements. "
-        "It fails to delete text and all_space."
     )
     print()
     print(textwrap.dedent("""
@@ -144,7 +155,7 @@ def main():
         axis="columns",
         thresh=5
     )
-    print(df)
+    print(dfa)
     print()
     print("loc, isin")
     print("---------")
