@@ -36,7 +36,7 @@ def main():
     )
     df = pd.DataFrame(
         data=dict(
-            floats=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, np.NaN],
+            floats=[1.0, np.NaN, 3.0, np.NaN, 5.0, 6.0, np.NaN],
             text=["A", "B", "C", "D", "E", "F", np.NaN],
             dates=[
                 "1956-06-08", "1956-06-08",
@@ -51,7 +51,7 @@ def main():
             nan_space=[np.NaN, "", " ", np.NaN, np.NaN, np.NaN, np.NaN],
             nan_none=[np.NaN, None, np.NaN, np.NaN, None, np.NaN, None],
             mixed=[None, np.NaN, pd.NaT, pd.NaT, None, np.NaN, pd.NaT],
-            integers=[1, 2, 3, 4, 5, 6, np.NaN],
+            integers=[1, 2, np.NaN, 4, 5, 6, np.NaN],
         )
     ).replace(
         r"^\s+$",
@@ -84,6 +84,10 @@ def main():
     print()
     print(df.isna())
     print()
+    print("df.notna()")
+    print()
+    print(df.notna())
+    print()
     print("df.dtypes")
     print()
     print(df.dtypes)
@@ -97,7 +101,6 @@ def main():
     )
     print()
     print("Delete columns where all elements are missing.")
-    print()
     print(textwrap.dedent("""
         df = df.dropna(
             axis="columns",
@@ -112,10 +115,7 @@ def main():
     print(dfa)
     print()
     print("Delete columns where at least one element missing.")
-    print()
     dfa = df.copy()
-    print(dfa)
-    print()
     print(textwrap.dedent("""
         df = df.dropna(
             axis="columns",
@@ -129,96 +129,21 @@ def main():
     print(dfa)
     print()
     print(
-        "Delete columns where there are less than seven non-missing elements. "
+        "Delete columns where there are less than five non-missing elements. "
         "It fails to delete text and all_space."
     )
-    print()
-    df = pd.DataFrame(
-        dict(
-            integers=[1, 2, 3, 4, np.NaN, 6, 7],
-            floats=[1.0, 2.0, 3.0, np.NaN, 5.0, 6.0, 7.0],
-            text=["A", "B", "C", "D", "", "F", "G"],
-            dates=[
-                pd.Timestamp("1956-06-08"), pd.NaT,
-                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
-                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
-                pd.Timestamp("1956-06-08")
-            ],
-            all_nan=[np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
-            all_nat=[pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT],
-            all_none=[None, None, None, None, None, None, None],
-            all_space=["", "", "", "", "", "", ""],
-            nan_space=[np.NaN, "", np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
-            nan_none=[np.NaN, None, np.NaN, np.NaN, None, np.NaN, None],
-            mixed=[None, np.NaN, pd.NaT, pd.NaT, None, np.NaN, pd.NaT]
-        )
-    )
-    print(df)
     print()
     print(textwrap.dedent("""
         df = df.dropna(
             axis="columns",
-            thresh=7
+            thresh=5
         )
     """))
     df = df.dropna(
         axis="columns",
-        thresh=7
+        thresh=5
     )
     print(df)
-    print()
-    print("isna, notna")
-    print("------")
-    print()
-    print(
-        "isna works for pd.NaT, np.NaN, and None. "
-        "It does not work for ''. "
-        "all_space and non_space should be all True."
-    )
-    print()
-    df = pd.DataFrame(
-        dict(
-            integers=[1, 2, 3, 4, 5, 6, 7],
-            floats=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
-            text=["A", "B", "C", "D", "E", "F", "G"],
-            dates=[
-                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
-                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
-                pd.Timestamp("1956-06-08"), pd.Timestamp("1956-06-08"),
-                pd.Timestamp("1956-06-08")
-            ],
-            all_nan=[np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
-            all_nat=[pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.NaT],
-            all_none=[None, None, None, None, None, None, None],
-            all_space=["", "", "", "", "", "", ""],
-            nan_space=[np.NaN, "", np.NaN, np.NaN, np.NaN, np.NaN, np.NaN],
-            nan_none=[np.NaN, None, np.NaN, np.NaN, None, np.NaN, None],
-            mixed=[None, np.NaN, pd.NaT, pd.NaT, None, np.NaN, pd.NaT]
-        )
-    )
-    print(df)
-    print()
-    print(textwrap.dedent("""
-        df = df.isna()
-    """))
-    dfa = df.copy()
-    dfa = dfa.isna()
-    print(dfa)
-    print()
-    print(
-        "notna works for pd.NaT, np.NaN, and None. "
-        "It does not work for ''. "
-        "all_space and non_space should be all False."
-    )
-    print()
-    print(df)
-    print()
-    print(textwrap.dedent("""
-        df = df.notna()
-    """))
-    dfa = df.copy()
-    dfa = dfa.notna()
-    print(dfa)
     print()
     print("loc, isin")
     print("---------")
