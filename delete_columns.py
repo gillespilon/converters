@@ -151,42 +151,34 @@ def main():
     print()
     print("Delete columns where all elements are missing.")
     print()
-    print(textwrap.dedent("""
-        df.loc[:, ~df.isin(empty_items).all()]
-    """))
+    print("df.loc[:, ~df.isin(empty_items).all()]")
+    print()
     dfa = df.copy()
     dfa = dfa.loc[:, ~dfa.isin(empty_items).all()]
     print(dfa)
     print()
     print("Delete columns where at least one element missing.")
-    print()
     print(textwrap.dedent("""
         df.loc[:, ~df.isin(empty_items).any()]
-        dfa.loc[:, ~(dfa.isin([np.NaN, pd.NaT, None, ""]).sum() != 0)]
+        df.loc[:, ~(df.isin(empty_items).sum() != 0)]
     """))
     dfa = df.copy()
     dfa = dfa.loc[:, ~dfa.isin(empty_items).any()]
-    # dfa = dfa.loc[:, ~(dfa.isin([np.NaN, pd.NaT, None, ""]).sum() != 0)]
+    # df = df.loc[:, ~(df.isin(empty_items).sum() != 0)]
     print(dfa)
     print()
     print("Delete columns where three or more elements are missing.")
     print()
-    print(df)
+    print("df.loc[:, ~(df.isin(empty_items).sum() >= 3)]")
     print()
-    print(textwrap.dedent("""
-        dfa.loc[:, ~(dfa.isin([np.NaN, pd.NaT, None, ""]).sum() >= 3)]
-    """))
     dfa = df.copy()
-    dfa = dfa.loc[:, ~(dfa.isin([np.NaN, pd.NaT, None, ""]).sum() >= 3)]
+    dfa = dfa.loc[:, ~(dfa.isin(empty_items).sum() >= 3)]
     print(dfa)
     print()
     print("Keep columns where at least four elements are not missing.")
     print()
-    print(df)
+    print("df.loc[:, ((len(df) - df.isin(empty_items).sum()) >= 4)]")
     print()
-    print(textwrap.dedent("""
-        df.loc[:, ((len(df) - df.isin(empty_items).sum()) >= 4)]
-    """))
     dfa = df.copy()
     dfa = dfa.loc[:, ((len(dfa) - dfa.isin(empty_items).sum()) >= 4)]
     print(dfa)
