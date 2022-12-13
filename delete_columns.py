@@ -17,7 +17,6 @@ def main():
     output_url = "delete_columns.html"
     header_title = "Delete columns"
     header_id = "delete-columns"
-    empty_items = [np.NaN, pd.NaT, None, ""]
     start_time = time.perf_counter()
     original_stdout = ds.html_begin(
         output_url=output_url,
