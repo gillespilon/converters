@@ -15,7 +15,6 @@ import numpy as np
 def main():
     columns_to_check = ["integers", "floats", "text"]
     look_in_columns = ["floats", "text", "dates"]
-    empty_items = [np.NaN, pd.NaT, None, ""]
     output_url = "delete_rows.html"
     header_title = "Delete rows"
     header_id = "delete-rows"
