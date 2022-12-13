@@ -1,11 +1,6 @@
 #! /usr/bin/env python3
 """
 Code to delete columns based on various criteria.
-
-dropna works for pd.NaT, np.NaN, and None. Additional code using .replace
-fixes other missing values.
-
-isin in combination with loc works for pd.NaT, np.NaN, None, and "".`
 """
 
 from pathlib import Path
@@ -157,41 +152,41 @@ def main():
     )
     print(dfa)
     print()
-    print("loc, isin")
+    print("loc, isna")
     print("---------")
     print()
     print("Delete columns where all elements are missing.")
     print()
-    print("df.loc[:, ~df.isin(empty_items).all()]")
+    print("df.loc[:, ~df.isna().all()]")
     print()
     dfa = df.copy()
-    dfa = dfa.loc[:, ~dfa.isin(empty_items).all()]
+    dfa = dfa.loc[:, ~dfa.isna().all()]
     print(dfa)
     print()
     print("Delete columns where at least one element missing.")
     print(textwrap.dedent("""
-        df.loc[:, ~df.isin(empty_items).any()]
-        df.loc[:, ~(df.isin(empty_items).sum() != 0)]
+        df.loc[:, ~df.isna().any()]
+        df.loc[:, ~(df.isna().sum() != 0)]
     """))
     dfa = df.copy()
-    dfa = dfa.loc[:, ~dfa.isin(empty_items).any()]
-    # df = df.loc[:, ~(df.isin(empty_items).sum() != 0)]
+    dfa = dfa.loc[:, ~dfa.isna().any()]
+    # df = df.loc[:, ~(df.isna().sum() != 0)]
     print(dfa)
     print()
     print("Delete columns where three or more elements are missing.")
     print()
-    print("df.loc[:, ~(df.isin(empty_items).sum() >= 3)]")
+    print("df.loc[:, ~(df.isna().sum() >= 3)]")
     print()
     dfa = df.copy()
-    dfa = dfa.loc[:, ~(dfa.isin(empty_items).sum() >= 3)]
+    dfa = dfa.loc[:, ~(dfa.isna().sum() >= 3)]
     print(dfa)
     print()
     print("Keep columns where at least four elements are not missing.")
     print()
-    print("df.loc[:, ((len(df) - df.isin(empty_items).sum()) >= 4)]")
+    print("df.loc[:, ((len(df) - df.isna().sum()) >= 4)]")
     print()
     dfa = df.copy()
-    dfa = dfa.loc[:, ((len(dfa) - dfa.isin(empty_items).sum()) >= 4)]
+    dfa = dfa.loc[:, ((len(dfa) - dfa.isna().sum()) >= 4)]
     print(dfa)
     print()
     stop_time = time.perf_counter()
