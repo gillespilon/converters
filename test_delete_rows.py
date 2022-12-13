@@ -49,9 +49,7 @@ df_empty_test = pd.DataFrame(
 
 def test_delete_empty_rows():
     """
-    Test delete empty rows:
-    - all elements for a row for all columns
-    - all elements for a row for specific columns
+    Test that all elements of a row are empty, for all columns.
     """
     result = ds.delete_empty_rows(df=df_empty_test)
     expected = pd.DataFrame(
