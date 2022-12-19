@@ -135,7 +135,7 @@ def main():
     print(dfa)
     print()
     print(
-        "Delete columns where there are less than five non-missing elements."
+        "Keep columns where there are at least five non-missing elements."
     )
     print()
     print(textwrap.dedent("""
