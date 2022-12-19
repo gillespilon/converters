@@ -137,7 +137,7 @@ def main():
     )
     print(dfa)
     print()
-    print("Delete rows where there are less than four non-missing elements.")
+    print("Keep rows where there are at least four non-missing elements.")
     print(textwrap.dedent("""
         df = df.dropna(
             axis="index",
