@@ -189,14 +189,19 @@ def main():
     print(dfa)
     print()
     print(
-        "Do not delete columns using list_empty_columns because not all "
-        "columns in list are empty."
+        "You can use ds.delete_columns using list_empty_columns ."
+        "If one or more columns are not empty, none of the columns in the "
+        "list will be deleted and a warning will be returned."
     )
     print()
     list_empty_columns = ["mixed", "nan_none", "integers"]
     print(
         "List of empty columns. 'integers' is not empty.",
         list_empty_columns
+    )
+    print()
+    print(
+        "ds.delete_empty_columns(df=df, list_empty_columns=list_empty_columns)"
     )
     print()
     df_unchanged = \
