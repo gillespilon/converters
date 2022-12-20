@@ -221,7 +221,6 @@ def main():
         file_in="df"
     )
     print(df_dataframe_info)
-    print()
     stop_time = time.perf_counter()
     ds.script_summary(
         script_path=Path(__file__),
