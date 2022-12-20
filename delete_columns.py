@@ -208,6 +208,20 @@ def main():
         ds.delete_empty_columns(df=df, list_empty_columns=list_empty_columns)
     print(df_unchanged)
     print()
+    print("Use ds.dataframe_info")
+    print()
+    print(textwrap.dedent("""
+        df_dataframe_info = ds.dataframe_info(
+            df=df,
+            file_in="df"
+        )
+    """))
+    df_dataframe_info = ds.dataframe_info(
+        df=df,
+        file_in="df"
+    )
+    print(df_dataframe_info)
+    print()
     stop_time = time.perf_counter()
     ds.script_summary(
         script_path=Path(__file__),
