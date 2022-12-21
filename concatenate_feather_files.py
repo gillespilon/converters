@@ -66,7 +66,10 @@ def main():
             ]
         )
         .drop_duplicates()
-        .dropna(how="any")
+        .dropna(
+            axis="index",
+            how="any"
+        )
     )
     # save as feather file
     ds.save_file(
