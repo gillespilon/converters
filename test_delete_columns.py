@@ -129,7 +129,7 @@ def test_delete_empty_columns():
         }
     )
     assert result2.equals(other=expected2)
-    # No not delete columns using list_empty_columns because
+    # Do not delete columns using list_empty_columns because
     # not all columns in list are empty
     list_empty_columns = ["mixed", "nan_none", "integers"]
     result3 = ds.delete_empty_columns(
