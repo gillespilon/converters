@@ -32,7 +32,7 @@ def main():
         output_url=output_url, header_title=header_title, header_id=header_id
     )
     ds.script_summary(script_path=Path(__file__), action="started at")
-    html_files = ds.directory_file_list(
+    html_files = ds.list_files(
         directory=path_html_files, patterns=patterns_html
     )
     html_files = [x for x in html_files if x.stem.startswith(pattern_in_line)]
@@ -40,7 +40,7 @@ def main():
     print()
     for f in html_files:
         copyfile(src=f, dst=Path(f).with_suffix(new_extension))
-    aspx_files = ds.directory_file_list(
+    aspx_files = ds.list_files(
         directory=path_html_files, patterns=patterns_aspx
     )
     for f in aspx_files:
