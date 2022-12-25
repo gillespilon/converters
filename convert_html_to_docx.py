@@ -32,7 +32,7 @@ def main():
         title=title_ask_directory, print_bool=True
     )
     start_time = time.perf_counter()
-    html_files = ds.directory_file_list(
+    html_files = ds.list_files(
         directory=path_html_files, patterns=patterns
     )
     html_files = [
