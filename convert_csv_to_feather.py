@@ -35,7 +35,7 @@ def main():
     start_time = time.perf_counter()
     # create list of paths to read
     path_csv = Path(directory_csv_files)
-    paths_in = ds.directory_file_list(
+    paths_in = ds.list_files(
         directory=path_csv, patterns=extension_in
     )
     print("List of .csv files")
