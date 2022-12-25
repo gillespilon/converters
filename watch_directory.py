@@ -43,7 +43,7 @@ def main():
     print("watched directory: ", path)
     print()
     files_start = sorted(
-        ds.directory_file_list(directory=path, patterns=patterns)
+        ds.list_files(directory=path, patterns=patterns)
     )
     print("files start")
     files_start_names = [f.name for f in files_start]
@@ -54,10 +54,10 @@ def main():
     print("slept for ", time_delay, "s")
     print()
     files_finish = sorted(
-        ds.directory_file_list(directory=path, patterns=patterns)
+        ds.list_files(directory=path, patterns=patterns)
     )
     files_finish = sorted(
-        ds.directory_file_list(directory=path, patterns=patterns)
+        ds.list_files(directory=path, patterns=patterns)
     )
     files_new_modified = [
         f.name for f in files_finish
