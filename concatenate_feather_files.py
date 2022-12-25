@@ -54,7 +54,7 @@ def main():
     )
     ds.script_summary(script_path=Path(__file__), action="started at")
     # create list of paths to read
-    files = ds.directory_file_list(
+    files = ds.list_files(
         directory=directory_feather_files, patterns=[extension]
     )
     # create DataFrame from list of paths
