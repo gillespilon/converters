@@ -36,7 +36,8 @@ def main():
     # create list of paths to read
     path_csv = Path(directory_csv_files)
     paths_in = ds.list_files(
-        directory=path_csv, patterns=extension_in
+        directory=path_csv,
+        pattern_extension=extension_in
     )
     print("List of .csv files")
     print(paths_in)
@@ -53,9 +54,10 @@ def main():
     print(paths_out)
     print()
     # convert csv to feather
-    for path_in, path_out in zip(paths_in, paths_out):
-        df = ds.read_file(file_name=path_in)
-        ds.save_file(df=df, file_name=path_out)
+    ds.convert_csv_to_feather(
+        paths_in=paths_in,
+        paths_out=paths_out
+    )
     stop_time = time.perf_counter()
     # Save html file
     ds.script_summary(script_path=Path(__file__), action="finished at")
