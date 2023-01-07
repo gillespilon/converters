@@ -50,18 +50,28 @@ def main():
     header = 0
     start_time_1 = time.perf_counter()
     original_stdout = ds.html_begin(
-        output_url=output_url, header_title=header_title, header_id=header_id
+        output_url=output_url,
+        header_title=header_title,
+        header_id=header_id
     )
-    ds.script_summary(script_path=Path(__file__), action="started at")
+    ds.script_summary(
+        script_path=Path(__file__),
+        action="started at"
+    )
     # create list of paths to read
     files = ds.list_files(
-        directory=directory_feather_files, patterns=[extension]
+        directory=directory_feather_files,
+        pattern_extension=[extension]
     )
     # create DataFrame from list of paths
     df = (
         pd.concat(
             objs=[
-                ds.read_file(file_name=item, header=header, skiprows=skiprows)
+                ds.read_file(
+                    file_name=item,
+                    header=header,
+                    skiprows=skiprows
+                )
                 for item in files
             ]
         )
@@ -73,7 +83,9 @@ def main():
     )
     # save as feather file
     ds.save_file(
-        df=df, file_name=path_file_out.with_suffix(extension), index=False
+        df=df,
+        file_name=path_file_out.with_suffix(extension),
+        index=False
     )
     print("path_directory_files_in:")
     print(directory_feather_files)
@@ -89,10 +101,16 @@ def main():
     print("is", size_str, "with", df.shape[0], "rows.")
     print()
     stop_time_1 = time.perf_counter()
-    ds.script_summary(script_path=Path(__file__), action="finished at")
+    ds.script_summary(
+        script_path=Path(__file__),
+        action="finished at"
+    )
     print(f"Execution time: {round(stop_time_1 - start_time_1, 6)} s")
     print()
-    ds.html_end(original_stdout=original_stdout, output_url=output_url)
+    ds.html_end(
+        original_stdout=original_stdout,
+        output_url=output_url
+    )
 
 
 if __name__ == "__main__":
