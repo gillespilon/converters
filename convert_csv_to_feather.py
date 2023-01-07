@@ -21,11 +21,15 @@ def main():
     extension_in = [".csv"]
     # create html report
     original_stdout = ds.html_begin(
-        output_url=output_url, header_title=header_title, header_id=header_id
+        output_url=output_url,
+        header_title=header_title,
+        header_id=header_id
     )
     ds.script_summary(script_path=Path(__file__), action="started at")
     directory_csv_files = ds.ask_directory_path(
-        title=title_ask_directory_csv, initialdir=initialdir, print_bool=True
+        title=title_ask_directory_csv,
+        initialdir=initialdir,
+        print_bool=True
     )
     directory_feather_files = ds.ask_directory_path(
         title=title_ask_directory_feather,
@@ -45,7 +49,8 @@ def main():
     # create list of paths to save
     paths_out = [
         Path(
-            directory_feather_files, paths_in[count].name
+            directory_feather_files,
+            paths_in[count].name
         ).with_suffix(extension_out)
         for count, element in enumerate(paths_in)
     ]
@@ -60,9 +65,18 @@ def main():
     )
     stop_time = time.perf_counter()
     # Save html file
-    ds.script_summary(script_path=Path(__file__), action="finished at")
-    ds.report_summary(start_time=start_time, stop_time=stop_time)
-    ds.html_end(original_stdout=original_stdout, output_url=output_url)
+    ds.script_summary(
+        script_path=Path(__file__),
+        action="finished at"
+    )
+    ds.report_summary(
+        start_time=start_time,
+        stop_time=stop_time
+    )
+    ds.html_end(
+        original_stdout=original_stdout,
+        output_url=output_url
+    )
 
 
 if __name__ == "__main__":
