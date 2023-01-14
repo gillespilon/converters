@@ -17,22 +17,30 @@ import pandas as pd
 
 def main():
     start_time = time.perf_counter()
+    HEADER_TITle = "Linear regression, scatter plot, fitted line on subsets"
     HEADER_ID = "Linear regression, scatter plot, fitted line on subsets"
+    GRAPHICS_FILE_PREFIX = "linear_regression_graphics_dataframe"
     OUTPUT_URL = "linear_regression_graphics_dataframe_loc.html"
-    HEADER_TITle = "Convert .csv to .feather"
+    SCATTER_PLOT_TITLE = "Scatter plot of subset"
     COLUMN_PREDICTIONS = "mean"
-    COLUMN_SOLD_TO = "sold_to"
-    COLUMN_SALES = "sales"
+    COLUMN_SUBSETS = "subset"
+    COLUMN_Y = "dependent"
     COLUMN_DATE = "date"
     P_VALUE = "p value"
     SLOPE = "slope"
     DATA = {
-        COLUMN_SOLD_TO: [1, 1, 1, 1, 1, 2, 2, 2, 2],
+        COLUMN_SUBSETS: [
+            1, 1, 1, 1, 1,
+            2, 2, 2, 2
+        ],
         COLUMN_DATE: [
             "2022-01", "2022-02", "2022-03", "2022-04", "2022-05",
             "2022-01", "2022-03", "2022-05", "2022-06",
         ],
-        COLUMN_SALES: [1, 3, 2, 5, 7, 3, 6, 10, 15],
+        COLUMN_Y: [
+            1, 3, 2, 5, 7,
+            3, 6, 10, 15
+        ],
     }
     original_stdout = ds.html_begin(
         output_url=OUTPUT_URL,
@@ -45,19 +53,19 @@ def main():
     )
     df = pd.DataFrame(data=DATA)
     df = ds.optimize_columns(df=df)
-    sold_to_numbers = set(df[COLUMN_SOLD_TO])
-    for sold_to in sold_to_numbers:
+    column_subsets = set(df[COLUMN_SUBSETS])
+    for column_subset in column_subsets:
         y = (
-            df.loc[df[COLUMN_SOLD_TO] == sold_to, [COLUMN_SALES]]
+            df.loc[df[COLUMN_SUBSETS] == column_subset, [COLUMN_Y]]
             .reset_index(drop=True).squeeze()
         )
-        X = pd.Series(range(0, len(y)))
+        X = pd.Series(data=range(0, len(y)))
         X_plot = X
         X_dates = (
-            df.loc[df[COLUMN_SOLD_TO] == sold_to, [COLUMN_DATE]]
+            df.loc[df[COLUMN_SUBSETS] == column_subset, [COLUMN_DATE]]
             .reset_index(drop=True).squeeze()
         )
-        X = sm.add_constant(X)
+        X = sm.add_constant(data=X)
         fitted_model, predictions = ds.linear_regression(
             X=X,
             y=y,
@@ -69,12 +77,12 @@ def main():
             y1=y,
             y2=predictions
         )
-        scatter_plot_title = f"Scatter plot of sold to {sold_to}"
+        scatter_plot_title = f"{SCATTER_PLOT_TITLE} {column_subset}"
         ax.set_title(
             label=scatter_plot_title,
             fontsize=13
         )
-        ax.set_ylabel(ylabel=COLUMN_SALES)
+        ax.set_ylabel(ylabel=COLUMN_Y)
         ax.set_xlabel(xlabel="date")
         ax.set_xticks(ticks=X_plot.astype(float).values.tolist())
         ax.set_xticklabels(labels=X_dates.astype(str).values.tolist())
@@ -85,7 +93,9 @@ def main():
         left, bottom, height = 0, 0, 1
         top = bottom + height
         ax.text(
-            left, top, text_to_plot,
+            x=left,
+            y=top,
+            s=text_to_plot,
             horizontalalignment='left',
             verticalalignment='top',
             transform=ax.transAxes,
@@ -93,12 +103,16 @@ def main():
         )
         fig.autofmt_xdate()
         fig.savefig(
-            fname=f"linear_regression_graphics_dataframe_{sold_to}.svg",
+            fname=f"{GRAPHICS_FILE_PREFIX}_{column_subset}.svg",
             format="svg"
         )
         ds.html_figure(
-            file_name=f"linear_regression_graphics_dataframe_{sold_to}.svg",
-            caption=f"linear_regression_graphics_dataframe_{sold_to}.svg"
+            file_name=(
+                f"{GRAPHICS_FILE_PREFIX}_{column_subset}.svg"
+            ),
+            caption=(
+                f"{GRAPHICS_FILE_PREFIX}_{column_subset}.svg"
+            )
         )
     stop_time = time.perf_counter()
     ds.script_summary(
