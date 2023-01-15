@@ -5,6 +5,7 @@ independent variable
 
 Requires:
 - datasense: https://github.com/gillespilon/datasense
+- statsmodels: https://www.statsmodels.org/dev/index.html
 """
 
 from pathlib import Path
