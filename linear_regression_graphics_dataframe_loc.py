@@ -66,7 +66,6 @@ def main():
             df.loc[df[COLUMN_SUBSETS] == column_subset, [COLUMN_DATE]]
             .reset_index(drop=True).squeeze()
         )
-        X = sm.add_constant(data=X)
         fitted_model, predictions = ds.linear_regression(
             X=X,
             y=y,
