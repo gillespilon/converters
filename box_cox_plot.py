@@ -4,9 +4,10 @@ Box-Cox normality plot
 
 Requirements
 - Series must be > 0
+- https://github.com/gillespilon/datasense
 
 Reference
-https://www.itl.nist.gov/div898/handbook/eda/section3/eda336.htm
+- https://www.itl.nist.gov/div898/handbook/eda/section3/eda336.htm
 """
 
 from pathlib import Path
@@ -18,23 +19,28 @@ import datasense as ds
 
 
 def main():
-    start_time = time.perf_counter()
-    path_box_cox_transformed = Path("box_cox_transformed.svg", format="svg")
-    path_box_cox_original = Path("box_cox_original.svg", format="svg")
-    path_box_cox = Path("box_cox_plot.svg", format="svg")
-    colour1, colour2 = "#0077bb", "#33bbee"
-    axes_label = "Normal Probability Plot"
-    ylabel1 = "Correlation Coefficient"
-    output_url = "box_cox_plot.html"
-    xlabel = "Theoretical Quantiles"
-    header_title = "Box-Cox Plot"
-    header_id = "box-cox-plot"
-    ylabel2 = "Ordered Values"
-    la, lb = -20, 20
+    START_TIME = time.perf_counter()
+    PATH_BOX_COX_TRANSFORMED = Path("box_cox_transformed.svg", format="svg")
+    PATH_BOX_COX_ORIGINAL = Path("box_cox_original.svg", format="svg")
+    PATH_BOX_COX = Path("box_cox_plot.svg", format="svg")
+    COLOUR1, COLOUR2 = "#0077bb", "#33bbee"
+    AXES_LABEL = "Normal Probability Plot"
+    YLABEL1 = "Correlation Coefficient"
+    OUTPUT_URL = "box_cox_plot.html"
+    XLABEL = "Theoretical Quantiles"
+    HEADER_TITLE = "Box-Cox Plot"
+    HEADER_ID = "box-cox-plot"
+    YLABEL2 = "Ordered Values"
+    LA, LB = -20, 20
     original_stdout = ds.html_begin(
-        output_url=output_url, header_title=header_title, header_id=header_id
+        output_url=OUTPUT_URL,
+        header_title=HEADER_TITLE,
+        header_id=HEADER_ID
     )
-    ds.script_summary(script_path=Path(__file__), action="started at")
+    ds.script_summary(
+        script_path=Path(__file__),
+        action="started at"
+    )
     ds.style_graph()
     # replace next line(s) with your data Series
     # df = ds.read_file(file_name=Path("us_mpg.csv"))
@@ -42,36 +48,75 @@ def main():
     # comment out next line if reading your own file
     s = stats.loggamma.rvs(5, size=500) + 5
     # create the Box-Cox normality plot
-    fig, ax = plt.subplots(nrows=1, ncols=1)
-    stats.boxcox_normplot(x=s, la=la, lb=lb, plot=ax)
-    ax.get_lines()[0].set(color=colour1, marker=".", markersize=4)
-    boxcox, lmax_mle, (min_ci, max_ci) = stats.boxcox(x=s, alpha=0.05)
-    ax.axvline(min_ci, color=colour2, label=f"min CI = {min_ci:7.3f}")
-    ax.axvline(lmax_mle, color=colour1, label=f"λ      = {lmax_mle:7.3f}")
-    ax.axvline(max_ci, color=colour2, label=f"max CI = {max_ci:7.3f}")
-    ax.set_ylabel(ylabel=ylabel1)
-    ax.legend(frameon=False, prop={"family": "monospace", "size": 8})
+    fig, ax = plt.subplots(
+        nrows=1,
+        ncols=1
+    )
+    stats.boxcox_normplot(
+        x=s,
+        la=LA,
+        lb=LB,
+        plot=ax
+    )
+    ax.get_lines()[0].set(
+        color=COLOUR1,
+        marker=".",
+        markersize=4
+    )
+    boxcox, lmax_mle, (min_ci, max_ci) = stats.boxcox(
+        x=s,
+        alpha=0.05
+    )
+    ax.axvline(
+        x=min_ci,
+        color=COLOUR2,
+        label=f"min CI = {min_ci:7.3f}"
+    )
+    ax.axvline(
+        x=lmax_mle,
+        color=COLOUR1,
+        label=f"λ      = {lmax_mle:7.3f}"
+    )
+    ax.axvline(
+        x=max_ci,
+        color=COLOUR2,
+        label=f"max CI = {max_ci:7.3f}"
+    )
+    ax.set_ylabel(ylabel=YLABEL1)
+    ax.legend(
+        frameon=False,
+        prop={"family": "monospace", "size": 8}
+    )
     ds.despine(ax=ax)
-    fig.savefig(fname=path_box_cox)
-    ds.html_figure(file_name=path_box_cox)
+    fig.savefig(fname=PATH_BOX_COX)
+    ds.html_figure(file_name=PATH_BOX_COX)
     # create the plot of the untransformed data
     fig, ax = ds.probability_plot(data=s)
-    ax.set_title(label=f"{axes_label}")
-    ax.set_xlabel(xlabel=xlabel)
-    ax.set_ylabel(ylabel=ylabel2)
-    fig.savefig(fname=path_box_cox_original)
-    ds.html_figure(file_name=path_box_cox_original)
+    ax.set_title(label=f"{AXES_LABEL}")
+    ax.set_xlabel(xlabel=XLABEL)
+    ax.set_ylabel(ylabel=YLABEL2)
+    fig.savefig(fname=PATH_BOX_COX_ORIGINAL)
+    ds.html_figure(file_name=PATH_BOX_COX_ORIGINAL)
     # create the plot of the transformed data
     fig, ax = ds.probability_plot(data=boxcox)
-    ax.set_title(label=f"{axes_label}")
-    ax.set_xlabel(xlabel=xlabel)
-    ax.set_ylabel(ylabel=ylabel2)
-    fig.savefig(fname=path_box_cox_transformed)
-    ds.html_figure(file_name=path_box_cox_transformed)
+    ax.set_title(label=f"{AXES_LABEL}")
+    ax.set_xlabel(xlabel=XLABEL)
+    ax.set_ylabel(ylabel=YLABEL2)
+    fig.savefig(fname=PATH_BOX_COX_TRANSFORMED)
+    ds.html_figure(file_name=PATH_BOX_COX_TRANSFORMED)
     stop_time = time.perf_counter()
-    ds.script_summary(script_path=Path(__file__), action="finished at")
-    ds.report_summary(start_time=start_time, stop_time=stop_time)
-    ds.html_end(original_stdout=original_stdout, output_url=output_url)
+    ds.script_summary(
+        script_path=Path(__file__),
+        action="finished at"
+    )
+    ds.report_summary(
+        start_time=START_TIME,
+        stop_time=stop_time
+    )
+    ds.html_end(
+        original_stdout=original_stdout,
+        output_url=OUTPUT_URL
+    )
 
 
 if __name__ == "__main__":
