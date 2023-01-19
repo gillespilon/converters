@@ -5,7 +5,6 @@ This repository contains scripts to illustrate skills and competencies in those 
 | Python script                               | Description                                                                                                                     |
 | :---                                        | :---                                                                                                                            |
 | anscombes_quartet.py                        | Anscombe's Quartet of four scatter plots and regression line in 2 x 2 grid.                                                     |
-| bash_commands_in_python_script.py           | Execute bash shell type commands in a Python script.                                                                            |
 | blake2_hashing.py                           | Examples of using Blake2 module as part of a blockchain.                                                                        |
 | blake3_hashing.py                           | Examples of using Blake3 module as part of a blockchain.                                                                        |
 | box_cox_plot.py                             | Create Box-Cox normality plot.                                                                                                  |
@@ -19,6 +18,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 | delete_columns.py                           | Delete columns based on various criteria.                                                                                       |
 | delete_rows.py                              | Delete rows based on various criteria.                                                                                          |
 | describe_data_file.py                       | Describe .csv and .feather files.                                                                                               |
+| directory_commands.py                       | Execute bash shell type commands in a Python script.                                                                            |
 | discrete_event_simulation_not_simpy.py      | Perform a discrete event simulation of a simple process using “sleep” rather than SimPy.                                        |
 | explore_functions.py                        | Explore functions using inspect.signature.                                                                                      |
 | extract_date_from_list_tuple.py             | Extract dates from a list or tuple of strings.                                                                                  |
