@@ -16,47 +16,81 @@ import pandas as pd
 
 
 def main():
-    axes_title = ["Data set 1", "Data set 2", "Data set 3", "Data set 4"]
-    left, right, top, bottom = 2, 20, 14, 2
-    output_url = "anscombes_quartet.html"
-    x_axis_label = "X axis label (units)"
-    y_axis_label = "Y axis label (units)"
-    header_title = "Anscombe’s Quartet"
-    fig_title = "Anscombe’s Quartet"
-    header_id = "anscombes-quartet"
-    colour_blue = "#0077bb"
-    colour_cyan = "#33bbee"
-    figsize = (12, 9)
+    AXES_TITLE = ["Data set 1", "Data set 2", "Data set 3", "Data set 4"]
+    LEFT, RIGHT, TOP, BOTTOM = 2, 20, 14, 2
+    OUTPUT_URL = "anscombes_quartet.html"
+    X_AXIS_LABEL = "X axis label (units)"
+    Y_AXIS_LABEL = "Y axis label (units)"
+    FILE_NAME = "anscombes_quartet.svg"
+    HEADER_TITLE = "Anscombe’s Quartet"
+    FIG_TITLE = "Anscombe’s Quartet"
+    HEADER_ID = "anscombes-quartet"
+    COLOUR_BLUE = "#0077bb"
+    COLOUR_CYAN = "#33bbee"
+    FIGSIZE = (12, 9)
+    FORMAT = "svg"
     original_stdout = ds.html_begin(
-        output_url=output_url, header_title=header_title, header_id=header_id
+        output_url=OUTPUT_URL,
+        header_title=HEADER_TITLE,
+        header_id=HEADER_ID
     )
-    ds.script_summary(script_path=Path(__file__), action="started at")
+    ds.script_summary(
+        script_path=Path(__file__),
+        action="started at"
+    )
     ds.style_graph()
     df1, df2, df3, df4 = create_dataframe()
-    fig = plt.figure(figsize=figsize)
-    fig.suptitle(t=fig_title)
+    fig = plt.figure(figsize=FIGSIZE)
+    fig.suptitle(t=FIG_TITLE)
     for index in range(1, 5):
         df = eval(f"df{index}")
         ax = fig.add_subplot(2, 2, index)
-        ax.plot(df["x"], df["y"], linestyle="", color=colour_blue)
-        b, m = nppoly.polyfit(df["x"], df["y"], 1)
+        ax.plot(
+            df["x"],
+            df["y"],
+            linestyle="",
+            color=COLOUR_BLUE
+        )
+        b, m = nppoly.polyfit(
+            x=df["x"],
+            y=df["y"],
+            deg=1
+        )
         equation = f"$y = {b:.1f} + {m:.1f}x$"
         ax.plot(
-            df["x"], m * df["x"] + b, marker="",
-            color=colour_cyan, label=equation
+            df["x"],
+            m * df["x"] + b,
+            marker="",
+            color=COLOUR_CYAN,
+            label=equation
         )
-        ax.set_ylim(bottom=bottom, top=top)
-        ax.set_xlim(left=left, right=right)
-        ax.set_title(label=f"{axes_title[index-1]}")
-        ax.set_ylabel(ylabel=y_axis_label)
-        ax.set_xlabel(xlabel=x_axis_label)
+        ax.set_ylim(
+            bottom=BOTTOM,
+            top=TOP
+        )
+        ax.set_xlim(
+            left=LEFT,
+            right=RIGHT
+        )
+        ax.set_title(label=f"{AXES_TITLE[index-1]}")
+        ax.set_ylabel(ylabel=Y_AXIS_LABEL)
+        ax.set_xlabel(xlabel=X_AXIS_LABEL)
         ax.legend(frameon=False)
         ds.despine(ax=ax)
     plt.tight_layout(pad=3)
-    fig.savefig(fname="anscombes_quartet.svg", format="svg")
-    ds.html_figure(file_name="anscombes_quartet.svg")
-    ds.script_summary(script_path=Path(__file__), action="finished at")
-    ds.html_end(original_stdout=original_stdout, output_url=output_url)
+    fig.savefig(
+        fname=FILE_NAME,
+        format=FORMAT
+    )
+    ds.html_figure(file_name=FILE_NAME)
+    ds.script_summary(
+        script_path=Path(__file__),
+        action="finished at"
+    )
+    ds.html_end(
+        original_stdout=original_stdout,
+        output_url=OUTPUT_URL
+    )
 
 
 def create_dataframe() -> Tuple[pd.DataFrame]:
