@@ -1,6 +1,9 @@
 #! /usr/bin/env python3
 """
 Concatenate a folder of feather files to create a single feather file.
+
+Requires
+- https://github.com/gillespilon/datasense
 """
 
 # code to prevent shell from closing on error when using cron, Task Scheduler
@@ -34,25 +37,25 @@ def main():
     # required for cron
     chdir(Path(__file__).parent.resolve())
     # define parameters
-    title_ask_directory_feather = "Directory of feather files?"
-    header_title = "Concatenate directory of feather files"
+    PATH_FILE_OUT = Path("concatenate_feather_files.feather").resolve()
+    TITLE_ASK_DIRECTORY_FEATHER = "Directory of feather files?"
+    HEADER_TITLE = "Concatenate directory of feather files"
+    OUTPUT_URL = "concatenate_feather_files.html"
+    HEADER_ID = "concatenate-feather-files"
+    EXTENSION = ".feather"
+    SKIPROWS = 0
+    HEADER = 0
     initialdir = Path(__file__).parent.resolve()
     directory_feather_files = ds.ask_directory_path(
-        title=title_ask_directory_feather,
+        title=TITLE_ASK_DIRECTORY_FEATHER,
         initialdir=initialdir,
         print_bool=True
     )
-    output_url = "concatenate_feather_files.html"
-    path_file_out = Path("concatenate_feather_files.feather").resolve()
-    header_id = "concatenate-feather-files"
-    extension = ".feather"
-    skiprows = 0
-    header = 0
     start_time_1 = time.perf_counter()
     original_stdout = ds.html_begin(
-        output_url=output_url,
-        header_title=header_title,
-        header_id=header_id
+        output_url=OUTPUT_URL,
+        header_title=HEADER_TITLE,
+        header_id=HEADER_ID
     )
     ds.script_summary(
         script_path=Path(__file__),
@@ -61,7 +64,7 @@ def main():
     # create list of paths to read
     files = ds.list_files(
         directory=directory_feather_files,
-        pattern_extension=[extension]
+        pattern_extension=[EXTENSION]
     )
     # create DataFrame from list of paths
     df = (
@@ -69,8 +72,8 @@ def main():
             objs=[
                 ds.read_file(
                     file_name=item,
-                    header=header,
-                    skiprows=skiprows
+                    header=HEADER,
+                    skiprows=SKIPROWS
                 )
                 for item in files
             ]
@@ -84,7 +87,7 @@ def main():
     # save as feather file
     ds.save_file(
         df=df,
-        file_name=path_file_out.with_suffix(extension),
+        file_name=PATH_FILE_OUT.with_suffix(suffix=EXTENSION),
         index=False
     )
     print("path_directory_files_in:")
@@ -95,8 +98,8 @@ def main():
     print(files_sorted)
     print()
     print("path_file_out:")
-    print(path_file_out)
-    size_int = ds.file_size(path=path_file_out)
+    print(PATH_FILE_OUT)
+    size_int = ds.file_size(path=PATH_FILE_OUT)
     size_str = ds.byte_size(num=size_int)
     print("is", size_str, "with", df.shape[0], "rows.")
     print()
@@ -109,7 +112,7 @@ def main():
     print()
     ds.html_end(
         original_stdout=original_stdout,
-        output_url=output_url
+        output_url=OUTPUT_URL
     )
 
 
