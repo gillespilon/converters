@@ -21,7 +21,6 @@ def main():
     upper_pi_column = "obs_ci_upper"
     title = "Regression analysis"
     colour_shading = "#888888"
-    prediction_column = "mean"
     graphname = "y_vs_x.svg"
     xlabel = "X axis label"
     ylabel = "Y axis label"
@@ -42,34 +41,36 @@ def main():
                 5.68
             ]
         }
-    )
-    df_predictions, fitted_model = ds.linear_regression(
-        df=df,
-        x_column=[x_column],
-        y_column=y_column,
-        prediction_column=prediction_column
+    ).sort_values(by=x_column)
+    (
+        fitted_model, predictions, confidence_interval_lower,
+        confidence_interval_upper, prediction_interval_lower,
+        prediction_interval_upper
+    ) = ds.linear_regression(
+        X=df[x_column],
+        y=df[y_column],
     )
     ds.style_graph()
     fig, ax = ds.plot_scatter_line_x_y1_y2(
-        X=df_predictions[x_column],
-        y1=df_predictions[y_column],
-        y2=df_predictions[prediction_column],
+        X=df[x_column],
+        y1=df[y_column],
+        y2=predictions,
         figsize=figsize,
         labellegendy1=labellegendy1,
         labellegendy2=labellegendy2
     )
     ax.fill_between(
-        df_predictions[x_column],
-        y1=df_predictions[lower_ci_column],
-        y2=df_predictions[upper_ci_column],
+        df[x_column],
+        y1=confidence_interval_lower,
+        y2=confidence_interval_upper,
         color=colour_shading,
         alpha=0.4,
         label=labellegendci
     )
     ax.fill_between(
-        x=df_predictions[x_column],
-        y1=df_predictions[lower_pi_column],
-        y2=df_predictions[upper_pi_column],
+        x=df[x_column],
+        y1=prediction_interval_lower,
+        y2=prediction_interval_upper,
         color=colour_shading,
         alpha=0.2,
         label=labellegendpi
