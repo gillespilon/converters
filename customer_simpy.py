@@ -1,7 +1,5 @@
 #! /usr/bin/env python3
 """
-waiter.py
-
 The waiter (process) serves in a restaurant (environment).
 
 The waiter takes orders from customers, gives orders to cooks, and serves food
