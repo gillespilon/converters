@@ -22,6 +22,9 @@ def main():
     GRAPHICS_FILE_PREFIX = "linear_regression_graphics_dataframe"
     OUTPUT_URL = "linear_regression_graphics_dataframe_loc.html"
     SCATTER_PLOT_TITLE = "Scatter plot of subset"
+    LABELLEGENDCI = "Confidence interval"
+    LABELLEGENDPI = "Prediction interval"
+    COLOUR_SHADING = "#888888"
     COLUMN_SUBSETS = "subset"
     COLUMN_Y = "dependent"
     COLUMN_DATE = "date"
@@ -50,7 +53,7 @@ def main():
         script_path=Path(__file__),
         action="started at"
     )
-    df = pd.DataFrame(data=DATA)
+    df = pd.DataFrame(data=DATA).sort_values(by=[COLUMN_SUBSETS, COLUMN_DATE])
     df = ds.optimize_columns(df=df)
     column_subsets = set(df[COLUMN_SUBSETS])
     for column_subset in column_subsets:
@@ -86,6 +89,26 @@ def main():
         ax.set_xlabel(xlabel="date")
         ax.set_xticks(ticks=X_plot.astype(float).values.tolist())
         ax.set_xticklabels(labels=X_dates.astype(str).values.tolist())
+        ax.fill_between(
+            X_plot,
+            y1=confidence_interval_lower,
+            y2=confidence_interval_upper,
+            color=COLOUR_SHADING,
+            alpha=0.4,
+            label=LABELLEGENDCI
+        )
+        ax.fill_between(
+            x=X_plot,
+            y1=prediction_interval_lower,
+            y2=prediction_interval_upper,
+            color=COLOUR_SHADING,
+            alpha=0.2,
+            label=LABELLEGENDPI
+        )
+        ax.legend(
+            loc="lower right",
+            frameon=False
+        )
         text_to_plot = (
             f"{SLOPE:>9} {fitted_model.params[0]:<12,.3f}\n"
             f"{P_VALUE:>9} {fitted_model.pvalues[0]:<12,.3f}"
