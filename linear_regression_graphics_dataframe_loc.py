@@ -11,7 +11,6 @@ Requires:
 from pathlib import Path
 import time
 
-import statsmodels.api as sm
 import datasense as ds
 import pandas as pd
 
@@ -23,7 +22,6 @@ def main():
     GRAPHICS_FILE_PREFIX = "linear_regression_graphics_dataframe"
     OUTPUT_URL = "linear_regression_graphics_dataframe_loc.html"
     SCATTER_PLOT_TITLE = "Scatter plot of subset"
-    COLUMN_PREDICTIONS = "mean"
     COLUMN_SUBSETS = "subset"
     COLUMN_Y = "dependent"
     COLUMN_DATE = "date"
@@ -66,11 +64,13 @@ def main():
             df.loc[df[COLUMN_SUBSETS] == column_subset, [COLUMN_DATE]]
             .reset_index(drop=True).squeeze()
         )
-        fitted_model, predictions = ds.linear_regression(
+        (
+            fitted_model, predictions, confidence_interval_lower,
+            confidence_interval_upper, prediction_interval_lower,
+            prediction_interval_upper
+        ) = ds.linear_regression(
             X=X,
-            y=y,
-            prediction_column=COLUMN_PREDICTIONS,
-            print_model_summary=False
+            y=y
         )
         fig, ax = ds.plot_scatter_line_x_y1_y2(
             X=X_plot,
