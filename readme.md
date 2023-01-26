@@ -44,8 +44,8 @@ This repository contains scripts to illustrate skills and competencies in those 
 | statsmodels_linear_regression.py            | Linear regression, graphical analysis, confidence and prediction intervals.                                                     |
 | statsmodels_multiple_linear_regression.py   | Multiple linear regression, confidence and prediction intervals.                                                                |
 | two_sample_t_test.py                        | Comprehensive statistical, graphical analysis of two-sample t test.                                                             |
+| valentine.py                                | Create a Valentine to your love.                                                                                                |
+| watch_directory.py                          | Watch a directory for new files, modified files.                                                                                |
 | waiter_simpy_1.py                           | SimPy simulation of a waiter in a restaurant. 1 of 2.                                                                           |
 | waiter_simpy_2.py                           | SimPy simulation of waiters, customers in a restaurant. 2 of 2.                                                                 |
 | yeo_johnson_plot.py                         | Create Yeo-Johnson normality plot.                                                                                              |
-| valentine.py                                | Create a Valentine to your love.                                                                                                |
-| watch_directory.py                          | Watch a directory for new files, modified files.                                                                                |
