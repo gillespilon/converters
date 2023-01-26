@@ -38,7 +38,6 @@ def main():
         1047, 965, 943, 958, 971, 949, 884, 866, 876, 822, 704, 719
     ]
     x_column = ["interest_rate", "unemployment_rate"]
-    prediction_column = "mean"
     y_column = "index_price"
     df = pd.DataFrame(
         data={
@@ -49,11 +48,14 @@ def main():
             y_column: series_index_price
         }
     )
-    df_predictions, fitted_model = ds.linear_regression(
-        df=df,
-        x_column=x_column,
-        y_column=y_column,
-        prediction_column=prediction_column
+    (
+        fitted_model, predictions, confidence_interval_lower,
+        confidence_interval_upper, prediction_interval_lower,
+        prediction_interval_upper
+    ) = ds.linear_regression(
+        X=df[x_column],
+        y=df[y_column],
+        print_model_summary=True
     )
     ds.html_end(
         original_stdout=original_stdout,
