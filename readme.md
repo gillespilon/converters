@@ -14,7 +14,6 @@ This repository contains scripts to illustrate skills and competencies in those 
 | convert_html_to_docx.py                     | Convert a directory of .html files to .docx files. Convert internal .html URLs to .docx URLs. Leave external .html URLs as is.  |
 | country_codes_names_domains.py              | Get country codes, names, domains from a Wikipedia table and create a file.                                                     |
 | create_qr_code.py                           | Create QR codes and save as .svg and .png files.                                                                                |
-| customer_simpy.py                           | Example of restaurant waiter process                                                                                            |
 | date_time_fstring.py                        | Explore date and time function with f-string.                                                                                   |
 | delete_columns.py                           | Delete columns based on various criteria.                                                                                       |
 | delete_rows.py                              | Delete rows based on various criteria.                                                                                          |
@@ -45,8 +44,8 @@ This repository contains scripts to illustrate skills and competencies in those 
 | statsmodels_linear_regression.py            | Linear regression, graphical analysis, confidence and prediction intervals.                                                     |
 | statsmodels_multiple_linear_regression.py   | Multiple linear regression, confidence and prediction intervals.                                                                |
 | two_sample_t_test.py                        | Comprehensive statistical, graphical analysis of two-sample t test.                                                             |
-| waiter_simpy.py                             | SimPy simulation of a waiter in a restaurant. 1 of 3.                                                                           |
-| customer_simpy.py                           | SimPy simulation of waiters, customers in a restaurant. 2 of 3.                                                                 |
+| waiter_simpy_1.py                           | SimPy simulation of a waiter in a restaurant. 1 of 2.                                                                           |
+| waiter_simpy_2.py                           | SimPy simulation of waiters, customers in a restaurant. 2 of 2.                                                                 |
 | yeo_johnson_plot.py                         | Create Yeo-Johnson normality plot.                                                                                              |
 | valentine.py                                | Create a Valentine to your love.                                                                                                |
 | watch_directory.py                          | Watch a directory for new files, modified files.                                                                                |
