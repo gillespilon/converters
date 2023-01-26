@@ -19,7 +19,7 @@ def main():
     COLOUR_SHADING = "#888888"
     GRAPH_NAME = "y_vs_x.svg"
     XLABEL = "X axis label"
-    ylabel = "Y axis label"
+    YLABEL = "Y axis label"
     LABELLEGENDY1 = "Data"
     FIGSIZE = (8, 6)
     X_COLUMN = "x"
@@ -80,7 +80,7 @@ def main():
         fontsize=12
     )
     ax.set_ylabel(
-        ylabel=ylabel,
+        ylabel=YLABEL,
         fontsize=12
     )
     ax.legend(
