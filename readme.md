@@ -48,4 +48,6 @@ This repository contains scripts to illustrate skills and competencies in those 
 | watch_directory.py                          | Watch a directory for new files, modified files.                                                                                |
 | waiter_simpy_1.py                           | SimPy simulation of a waiter in a restaurant. 1 of 2.                                                                           |
 | waiter_simpy_2.py                           | SimPy simulation of waiters, customers in a restaurant. 2 of 2.                                                                 |
+| xbar_r_control_charts.py                    | XbarR control charts                                                                                                            |
+| x_mr_control_charts.py                      | XmR control charts                                                                                                              |
 | yeo_johnson_plot.py                         | Create Yeo-Johnson normality plot.                                                                                              |
