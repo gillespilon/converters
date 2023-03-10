@@ -13,6 +13,7 @@ TODO
 - Compare to list of files to be uploaded (list B)
 - Compare A and B, delete files that are in A but not in B
 - Do the above before deleting and uploading files as shown in the code below
+- Instead of a files-to_upload list, "ask" for a directory of files to read
 """
 
 import datetime as dt
