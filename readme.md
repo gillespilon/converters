@@ -34,6 +34,7 @@ This repository contains scripts to illustrate skills and competencies in those 
 | linear_regression_graphics_dataframe_loc.py | Linear regression, scatter plot, fitted line,  on row subsets of the independent variable                                       |
 | move_directories.py                         | Move directories to keep history.                                                                                               |
 | normal_probability_plot.py                  | Create normal probability plot of a Series of data.                                                                             |
+| passphrase_generator.py                     | Create random passphrases of five title-case words and a single integer                                                        |
 | play_sound.py                               | Play an mp3 file with Python.                                                                                                   |
 | pyautogui_position.py                       | Use PyAutoGUI to determine cursor position and screen size.                                                                     |
 | sap_hana_to_dataframe_to_file.py            | Create DataFrame and feather file fromSAP HANA view.                                                                            |
