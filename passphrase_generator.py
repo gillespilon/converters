@@ -28,7 +28,13 @@ def main():
         random_passphrase.extend(
             [
                 str(random.randint(0, 9)),
-                random.choice(["~", "!", "@", "#", "$", "%", "^", "&", "*"])]
+                random.choice([
+                    "~", "!", "@", "#", "$", "%", "^", "&", "*",
+                    "(", ")", "_", "-", "+", "=", "{", "}", ".",
+                    "[", "]", "|", "\\", ":", ";", "\'", "\"", ",",
+                    "<", ">", "?", "/"
+                ])
+            ]
         )
         # Join the random integer and random symbol into one string.
         random_passphrase[-2:None] = ["".join(random_passphrase[-2:None])]
