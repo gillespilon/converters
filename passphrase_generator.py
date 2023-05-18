@@ -1,10 +1,17 @@
 #! /usr/bin/env python3
 """
-Generate ten random passphrases of five words in title case, with a single
-random integer and special character at the end.
+WHAT
+Generate ten random passphrases of six words:
+    Word space Word space Word space Word space Word space integer+character
 
-The json dictionary of English words is found here:
-https://github.com/dwyl/english-words/blob/master/words_alpha.txt
+An example would be:
+    Creosol Eradicates Cycloheptanone Posttracheal Impostumation 4&
+
+HOW
+- json dictionary of English words
+    https://github.com/dwyl/english-words/blob/master/words_alpha.txt
+- list comprehension of five random title-case words
+- extend the list with an integer and special character
 """
 
 import random
