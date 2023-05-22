@@ -9,7 +9,7 @@ An example would be:
 
 HOW
 - json dictionary of English words
-    https://github.com/dwyl/english-words/blob/master/words_alpha.txt
+    https://github.com/dwyl/english-words/blob/master/words_dictionary.json
 - list comprehension of five random title-case words
 - extend the list with an integer and special character
 """
@@ -20,6 +20,7 @@ import pandas as pd
 
 
 def main():
+    # Download the json file to your local repository and then load.
     df = pd.read_json(path_or_buf="words_dictionary.json", orient="index")
     for phrase in range(0, 10, 1):
         # Create a list of five random words.
