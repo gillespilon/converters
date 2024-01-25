@@ -1,6 +1,16 @@
 #! /usr/bin/env python3
 """
 Create a QR code from a string.
+
+Example
+-------
+./create_qr_code.py
+"https://github.com/gillespilon"
+/home/gilles/downloads/github_gilles_pilon
+
+The above will produce two files:
+/home/gilles/downloads/github_gilles_pilon.svg
+/home/gilles/downloads/github_gilles_pilon.png
 """
 
 from pathlib import Path
