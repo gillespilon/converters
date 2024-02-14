@@ -17,12 +17,12 @@ def main():
     chdir(Path(__file__).parent.resolve())  # required for cron
     parser = argparse.ArgumentParser(description="ATS Keyword Analysis")
     parser.add_argument(
-        "-pfcv",
-        "--path_or_file_cv",
+        "-pfcvr",
+        "--path_or_file_cv_raw",
         default=Path("ats_cv.txt"),
         type=Path,
         required=False,
-        help="path .txt cv (default: ats_cv.txt",
+        help="path .txt cv (default: ats_cv.txt)",
     )
     parser.add_argument(
         "-pfdk",
@@ -30,7 +30,7 @@ def main():
         default=Path("ats_deletions.txt"),
         type=Path,
         required=False,
-        help="path .txt deletions (default: ats_deletions.txt",
+        help="path .txt deletions (default: ats_deletions.txt)",
     )
     parser.add_argument(
         "-pfst",
@@ -38,13 +38,21 @@ def main():
         default=Path("ats_substrings.txt"),
         type=Path,
         required=False,
-        help="path .txt substrings (default: ats_substrings.txt",
+        help="path .txt substrings (default: ats_substrings.txt)",
+    )
+    parser.add_argument(
+        "-pfcvc",
+        "--path_or_file_cv_clean",
+        default=Path("ats_cv_clean.txt"),
+        type=Path,
+        required=False,
+        help="path .txt cv clean (default: ats_cv_clean.txt)",
     )
     args = parser.parse_args()
-    path_cv_raw = args.path_or_file_cv
+    path_cv_raw = args.path_or_file_cv_raw
+    path_clean_cv = args.path_or_file_cv_clean
     path_deletions = args.path_or_file_deletions
     path_substrings = args.path_or_file_substrings
-    path_clean_cv = Path("ats_cv_clean.txt")
     cv_raw = [(line.rstrip("\n")) for line in path_cv_raw.open()]
     print("cv_raw")
     print(cv_raw)
