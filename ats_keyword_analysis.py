@@ -16,10 +16,20 @@ import numpy as np
 
 def main():
     chdir(Path(__file__).parent.resolve())  # required for cron
+    parser = argparse.ArgumentParser(description="ATS Keyword Analysis")
+    parser.add_argument(
+        "-pfr",
+        "--path_or_file_resume",
+        default=Path("ats_resume.txt"),
+        type=Path,
+        required=False,
+        help="path or file of the .txt resume file (default: ats_resume.txt",
+    )
+    args = parser.parse_args()
     delete_substrings_path = Path("ats_delete_substrings.txt")
     delete_keywords_path = Path("ats_delete_keywords.txt")
     clean_keywords_path = Path("ats_clean_keywords.txt")
-    resume_path = Path("ats_resume.txt")
+    resume_path = args.path_or_file_resume
     resume_keywords = [(line.rstrip()) for line in resume_path.open()]
     delete_keywords = [(line.rstrip()) for line in delete_keywords_path.open()]
     # read the substrings to delete file, create list of strings
