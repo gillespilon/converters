@@ -50,18 +50,15 @@ def main():
     path_cv_raw = args.path_or_file_cv_raw
     path_cv_clean = args.path_or_file_cv_clean
     path_deletions = args.path_or_file_deletions
-    # might not be needed if done with regex
-    # path_substrings = args.path_or_file_substrings
+    path_substrings = args.path_or_file_substrings
     cv_raw = [(line.rstrip("\n")) for line in path_cv_raw.open()]
     deletions = [(line.rstrip("\n")) for line in path_deletions.open()]
-    # might not be needed if done with regex
-    # substrings = [line.rstrip("\n") for line in path_substrings.open()]
+    substrings = [line.rstrip("\n") for line in path_substrings.open()]
+    regex = r"|".join(substrings)
     cv_deletions = ds.list_one_list_two_ops(
         list_one=cv_raw, list_two=deletions, action="list_one"
     )
-    cv_substrings = [
-        re.sub(r"^Skills: |^\s{4}\• ", "", st) for st in cv_deletions
-    ]
+    cv_substrings = [re.sub(regex, "", st) for st in cv_deletions]
     with open(path_cv_clean, "w") as f:
         for s in cv_substrings:
             f.write(s + "\n")
